@@ -1,0 +1,103 @@
+.featured {
+  height: 90vh;
+  position: relative;
+  margin-bottom: 50px;
+
+  .category {
+    position: absolute;
+    top: 80px;
+    left: 50px;
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 100;
+
+    select {
+      border: 1px solid white;
+      background-color: var(--main-color);
+      color: white;
+      padding: 5px 10px;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(30%);
+  }
+
+  .info {
+    width: 33%;
+    position: absolute;
+    left: 50px;
+    bottom: 80px;
+    color: black;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(15.5px);
+    -webkit-backdrop-filter: blur(15.5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    display: flex;
+    flex-direction: column;
+    padding: 25px 15px;
+
+    .info-title {
+      width: 400px;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    .info-subtitle {
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .desc {
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 5px;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 30px;
+      border-radius: 12px;
+      border: none;
+      gap: 5px;
+      font-size: 14px;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.05);
+        transition: all 125ms ease-out;
+      }
+
+      &.play {
+        color: white;
+        background-color: var(--main-color);
+      }
+
+      &.more {
+        color: var(--main-color);
+        background-color: transparent;
+      }
+
+      .icon {
+        font-size: 16px;
+      }
+    }
+  }
+}
