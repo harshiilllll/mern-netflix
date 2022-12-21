@@ -1,5 +1,6 @@
 const express = require("express");
 const authRoute = require("./routes/auth");
+const userRoute = require("./routes/users")
 const app = express();
 const PORT = 8000 || process.env.PORT;
 
@@ -15,6 +16,7 @@ mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true})
 
 app.use(express.json());
 app.use("/api/auth", authRoute);
+app.use("/api/users", userRoute);
 
 app.listen(PORT, () => {
     console.log(`server is listening on ${PORT}`);
