@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import "./featured.scss";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import axios from 'axios';
 
 function Featured({ type }) {
+  const [content, setContent] = useState({});
+
+  useEffect(()=>{
+    const getRandomContent = async () => {
+      try {
+        const res = await axios.get(`movies/random?type=${type}`, {
+          headers: {
+            token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYTQxNzViOTM1ZWYxODY1YmRjMDRmNCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MjIzODY2NywiZXhwIjoxNjcyNjcwNjY3fQ.R99XRjYNMSy0jF7glDx9WVsDLYoVAeOcjTB8kEdf4yQ",
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+          }
+        })
+        setContent(res.data[0])
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getRandomContent();
+  }, [type])
   return (
     <div className="featured">
       {type && (
@@ -29,15 +49,12 @@ function Featured({ type }) {
         </div>
       )}
 
-      <img src="https://images.alphacoders.com/927/927310.jpg" alt="" />
+      <img src={content.img} alt="" />
       <div className="info">
-        <div className="info-subtitle">Action Movies</div>
-        <h2 className="info-title">Spider-man</h2>
+        <img src={content.imgTitle} className="info-subtitle" />
+        <h2 className="info-title">{content.title}</h2>
         <span className="desc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa ipsum
-          doloremque nobis obcaecati laudantium perferendis aspernatur tempore
-          cumque, animi nulla, rem inventore recusandae odit quisquam pariatur
-          repellat modi? Ipsum, nobis.
+          {content.desc}
         </span>
         <div className="buttons">
           <button className="play">

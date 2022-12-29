@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from "react-router-dom"
 
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import SearchIcon from "@mui/icons-material/Search";
@@ -22,11 +22,21 @@ const Navbar = () => {
         </div>
 
         <nav className="nav center">
-          <span>Home</span>
-          <span>Series</span>
-          <span>Movies</span>
-          <span>New and Popular</span>
-          <span>My playlist</span>
+          <Link to="/"  className="link">
+            <span>Home</span>
+          </Link>
+          <Link to="/series" className="link">
+            <span>Series</span>
+          </Link>
+          <Link to="/movies" className="link">
+            <span>Movies</span>
+          </Link>
+          <Link className="link">
+            <span>New and Popular</span>
+          </Link>
+          <Link className="link">
+            <span>My playlist</span>
+          </Link>
         </nav>
 
         <div className="right">
