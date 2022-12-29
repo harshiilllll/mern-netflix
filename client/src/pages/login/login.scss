@@ -1,0 +1,124 @@
+.login {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,1)), url("https://assets.nflxext.com/ffe/siteui/vlv3/d0a0affb-1c76-4cf0-9d75-eb531f32458c/e81da519-216b-4341-b9e7-92d45398ddc3/IN-en-20221214-popsignuptwoweeks-perspective_alpha_website_medium.jpg");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-size: cover;
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 50px;
+    align-items: center;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    font-family: 'Ubuntu', sans-serif;
+
+    .logo {
+      height: 30px;
+      cursor: pointer;
+      color: var(--accent-color);
+      letter-spacing: 2px;
+      font-weight: 900;
+      transform: translateY(-5px);
+    }
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Ubuntu', sans-serif;
+
+    .form {
+      margin-top: 50px;
+      width: 450px;
+      color: white;
+      height: 70vh;
+      padding: 50px;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      flex-direction: column;
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 4px;
+
+      h2 {
+        font-size: 34px;
+        margin-bottom: 20px;
+      }
+
+      .inputs {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+
+        input {
+          height: 50px;
+          width: 100%;
+          border: none;
+          outline: none;
+          background-color: #333333;
+          border-radius: 4px;
+          padding-left: 10px;
+          font-size: 18px;
+          color: white;
+        }
+      }
+
+      .login-btn {
+        height: 50px;
+        width: 100%;
+        border: none;
+        outline: none;
+        background-color: var(--accent-color);
+        border-radius: 4px;
+        font-size: 20px;
+        font-weight: 600;
+
+        &:hover {
+          background-color: var(--main-color);
+          color: var(--accent-color);
+          transition: all 225ms linear;
+          cursor: pointer;
+        }
+      }
+
+      .newto {
+        font-size: 18px;
+        color: lightgray;
+
+        .link {
+          color: white;
+          font-weight: 600;
+
+          &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .captcha-info {
+        font-size: 14px;
+        color: lightgray;
+
+        b {
+          color: white;
+          font-weight: 600;
+
+          &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
