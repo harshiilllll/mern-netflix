@@ -27,19 +27,21 @@ export default function WidgetSm() {
     <div className="widgetSm">
       <span className="widgetSmTitle">Recently Joined Members</span>
       <ul className="widgetSmList">
-      {newUsers.map((user) => (
+        {newUsers.map((user) => (
           <li key={user._id} className="widgetSmListItem">
-            <img
-              src={
-                user.profilePic ||
-                "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
-              }
-              alt="User avatar"
-              className="widgetSmImg"
-            />
-            <div className="widgetSmUser">
-              <span className="widgetSmUsername">{user.username}</span>
-              <span className="widgetSmUserTitle">{user.email}</span>
+            <div>
+              <img
+                src={
+                  user.profilePic ||
+                  "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+                }
+                alt="User avatar"
+                className="widgetSmImg"
+              />
+              <div className="widgetSmUser">
+                <span className="widgetSmUsername">{user.username}</span>
+                <span className="widgetSmUserTitle">{user.email}</span>
+              </div>
             </div>
             <button className="widgetSmButton">
               <Visibility className="widgetSmIcon" />

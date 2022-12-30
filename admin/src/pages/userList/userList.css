@@ -29,3 +29,7 @@
     color: red;
     cursor: pointer;
 }
+
+.productAddButton{
+  margin-bottom: 20px;
+}

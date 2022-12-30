@@ -18,10 +18,14 @@ export default function NewProduct() {
 
   const {dispatch} = useContext(MovieContext)
 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setMovie({ ...movie, [e.target.name]: value });
-  };
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setMovie({
+      ...movie,
+      [name]: name === "isSeries" && value === "true" ? true : value
+    });
+    console.log(movie);
+  }
 
   const upload = (items) => {
     if(!items) return;
@@ -78,7 +82,7 @@ export default function NewProduct() {
   return (
     <div className="newProduct">
       <h1 className="addProductTitle">Upload Movie</h1>
-      {uploadProgress}
+      <p>Uploading ...{uploadProgress}% done.</p>
       <form className="addProductForm">
         <div className="addProductItem">
           <label>Image</label>
@@ -187,7 +191,7 @@ export default function NewProduct() {
         {uploaded === 5 ? (
           <button className="addProductButton" onClick={handleSubmit}>Create</button>
         ) : (
-          <button className="addProductButton" onClick={handleUpload}>
+          <button className="addProductButtonUpload" onClick={handleUpload}>
             Upload
           </button>
         )}

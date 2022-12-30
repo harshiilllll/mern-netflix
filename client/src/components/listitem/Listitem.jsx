@@ -38,7 +38,9 @@ export default function Listitem({ index, item }) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <img src={movie.img} alt="movie" />
+        <img src={movie.imgSm} alt="movie" />
+        
+        
         {isHovered && (
           <>
             <video src={movie.trailer} autoPlay={true} loop />

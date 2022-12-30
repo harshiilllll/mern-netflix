@@ -1,6 +1,6 @@
 import "./list.scss";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ChevronLeftRoundedIcon  from "@mui/icons-material/ChevronLeftRounded";
+import ChevronRightRoundedIcon  from "@mui/icons-material/ChevronRightRounded";
 
 import Listitem from "../listitem/Listitem";
 import { useRef, useState } from "react";
@@ -28,21 +28,22 @@ export default function List({ list }) {
     <div className="list">
       <span className="listTitle">{list.title}</span>
       <div className="wrapper">
-        <ArrowBackIosIcon
-          className="sliderArrow left"
-          style={{ display: !isMoved && "none" }}
-          onClick={() => handleClick("left")}
-        />
         <div className="container" ref={listRef}>
           {list.content.map((item, i) => (
             <Listitem index={i} key={i} item={item} />
           ))}
-
         </div>
-        <ArrowForwardIosIcon
-          className="sliderArrow right"
-          onClick={() => handleClick("right")}
-        />
+        <div className="arrows">
+          <ChevronRightRoundedIcon 
+            className="sliderArrow right"
+            onClick={() => handleClick("right")}
+          />
+          <ChevronLeftRoundedIcon 
+            className="sliderArrow left"
+            // style={{ display: !isMoved && "none" }}
+            onClick={() => handleClick("left")}
+          />
+        </div>
       </div>
     </div>
   );

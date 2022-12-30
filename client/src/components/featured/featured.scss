@@ -31,26 +31,24 @@
   }
 
   .info {
-    width: 33%;
+    width: 40%;
     position: absolute;
     left: 50px;
     bottom: 80px;
-    color: black;
-    background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(15.5px);
-    -webkit-backdrop-filter: blur(15.5px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: white;
+    
+    // border: 1px solid rgba(255, 255, 255, 0.18);
     display: flex;
     flex-direction: column;
-    padding: 25px 15px;
+    padding: 25px 15px 25px 0px;
 
     .info-title {
-      width: 400px;
+      width: 100%;
       font-weight: 600;
-      text-transform: uppercase;
-      font-size: 38px;
+      text-transform: capitalize;
+      font-size: 78px;
       margin-bottom: 10px;
+      font-family: 'Ubuntu';
     }
 
     .info-subtitle {
@@ -61,7 +59,9 @@
     }
 
     .desc {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
+      font-family: 'Ubuntu';
+      color: #d7d7d7;
     }
 
     .buttons {
@@ -73,30 +73,35 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 30px;
-      border-radius: 12px;
+      padding: 10px 20px 10px 10px;
+      border-radius: 34px;
       border: none;
       gap: 5px;
-      font-size: 14px;
+      font-size: 16px;
       cursor: pointer;
 
       &:hover {
-        transform: scale(1.05);
-        transition: all 125ms ease-out;
+        transform: translateY(-5px);
+        transition: all 325ms ease-out;
       }
 
       &.play {
         color: white;
         background-color: var(--main-color);
+
+        &:hover {
+          background-color: var(--accent-color);
+          color: black;
+        }
       }
 
       &.more {
-        color: var(--main-color);
+        color: var(--accent-color);
         background-color: transparent;
       }
 
       .icon {
-        font-size: 16px;
+        font-size: 32px;
       }
     }
   }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import "./featured.scss";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import PlayCircleRoundedIcon from '@mui/icons-material/PlayCircleRounded';
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import axios from 'axios';
 
@@ -51,14 +51,14 @@ function Featured({ type }) {
 
       <img src={content.img} alt="" />
       <div className="info">
-        <img src={content.imgTitle} className="info-subtitle" />
+        {/* <img src={content.imgTitle} className="info-subtitle" /> */}
         <h2 className="info-title">{content.title}</h2>
         <span className="desc">
           {content.desc}
         </span>
         <div className="buttons">
           <button className="play">
-            <PlayArrowIcon className="icon" />
+            <PlayCircleRoundedIcon className="icon" />
             <span>Play</span>
           </button>
           <button className="more">

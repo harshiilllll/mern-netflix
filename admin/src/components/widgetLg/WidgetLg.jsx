@@ -6,7 +6,7 @@ export default function WidgetLg() {
   };
   return (
     <div className="widgetLg">
-      <h3 className="widgetLgTitle">Latest transactions</h3>
+      <h3 className="widgetLgTitle">Recently added Movies/Series</h3>
       <table className="widgetLgTable">
         <tbody>
           <tr className="widgetLgTr">

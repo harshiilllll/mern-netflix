@@ -31,6 +31,12 @@
     margin: 20px 0px;
 }
 
+.widgetSmListItem > div {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
 .widgetSmUser{
     display: flex;
     flex-direction: column;
