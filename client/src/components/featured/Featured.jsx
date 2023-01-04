@@ -1,37 +1,44 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 import "./featured.scss";
-import PlayCircleRoundedIcon from '@mui/icons-material/PlayCircleRounded';
+import PlayCircleRoundedIcon from "@mui/icons-material/PlayCircleRounded";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import axios from 'axios';
+import axios from "axios";
+import { Link } from "react-router-dom";
 
-function Featured({ type }) {
-  const [content, setContent] = useState({});
+function Featured({ type, setGenre }) {
+  const [movie, setMovie] = useState({});
 
-  useEffect(()=>{
-    const getRandomContent = async () => {
+  useEffect(() => {
+    const getRandomMovie = async () => {
       try {
         const res = await axios.get(`movies/random?type=${type}`, {
           headers: {
-            token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYTQxNzViOTM1ZWYxODY1YmRjMDRmNCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MjIzODY2NywiZXhwIjoxNjcyNjcwNjY3fQ.R99XRjYNMSy0jF7glDx9WVsDLYoVAeOcjTB8kEdf4yQ",
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-          }
-        })
-        setContent(res.data[0])
+            token:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYjMxYjU1YTFjNjcyMmYzYjMwODZlYiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NzI2ODIzNDQsImV4cCI6MTY3Mzk3ODM0NH0.wg2Q0fvjJ6V2uC4dNnCyMvFmHfQHXnqd9zd3NByCXi8",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+          },
+        });
+        setMovie(res.data[0]);
       } catch (err) {
         console.log(err);
       }
     };
-    getRandomContent();
-  }, [type])
+    getRandomMovie();
+  }, [type]);
   return (
     <div className="featured">
       {type && (
         <div className="category">
           <span>{type === "movie" ? "Movies" : "Series"}</span>
-          <select name="genre" id="genre">
+          <select
+            name="genre"
+            id="genre"
+            onChange={(e) => setGenre(e.target.value)}
+          >
             <option>Genre</option>
+            <option value="action">Action</option>
             <option value="adventure">Adventure</option>
             <option value="comedy">Comedy</option>
             <option value="crime">Crime</option>
@@ -49,18 +56,19 @@ function Featured({ type }) {
         </div>
       )}
 
-      <img src={content.img} alt="" />
+      <img src={movie.img} alt="" />
+
       <div className="info">
-        {/* <img src={content.imgTitle} className="info-subtitle" /> */}
-        <h2 className="info-title">{content.title}</h2>
-        <span className="desc">
-          {content.desc}
-        </span>
+        {/* <img src={movie.imgTitle} className="info-subtitle" /> */}
+        <h2 className="info-title">{movie.title}</h2>
+        <span className="desc">{movie.desc}</span>
         <div className="buttons">
-          <button className="play">
-            <PlayCircleRoundedIcon className="icon" />
-            <span>Play</span>
-          </button>
+          <Link to="/watch" style={{textDecoration: 'none'}} state={{ movie: movie }}>
+            <button className="play">
+              <PlayCircleRoundedIcon className="icon" />
+              <span>Play</span>
+            </button>
+          </Link>
           <button className="more">
             <InfoOutlinedIcon className="icon" />
             <span>Info</span>

@@ -1,10 +1,14 @@
-.container{
-    display: flex;
-    margin-top: 10px;
+:root {
+  --main: #fff;
+  --accent: #000;
 }
 
+.container {
+  display: flex;
+  margin-top: 10px;
+}
 
-.link{
-    text-decoration: none;
-    color: inherit;
+.link {
+  text-decoration: none;
+  color: inherit;
 }

@@ -29,6 +29,15 @@
     object-fit: cover;
     filter: brightness(30%);
   }
+  // img::before {
+  //   content: "";
+  //   background: linear-gradient(
+  //     0deg,
+  //     #202125 0,
+  //     rgba(32, 33, 37, 0) 50%,
+  //     #202125 100%
+  //   );
+  // }
 
   .info {
     width: 40%;
@@ -36,7 +45,7 @@
     left: 50px;
     bottom: 80px;
     color: white;
-    
+
     // border: 1px solid rgba(255, 255, 255, 0.18);
     display: flex;
     flex-direction: column;
@@ -48,7 +57,7 @@
       text-transform: capitalize;
       font-size: 78px;
       margin-bottom: 10px;
-      font-family: 'Ubuntu';
+      font-family: "Ubuntu";
     }
 
     .info-subtitle {
@@ -60,7 +69,7 @@
 
     .desc {
       margin-bottom: 25px;
-      font-family: 'Ubuntu';
+      font-family: "Ubuntu";
       color: #d7d7d7;
     }
 

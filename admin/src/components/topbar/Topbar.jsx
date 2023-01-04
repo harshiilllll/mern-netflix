@@ -1,8 +1,13 @@
 import React from "react";
 import "./topbar.css";
-import { NotificationsNone, Language, Settings } from "@material-ui/icons";
+import { NotificationsNone, Language, ExitToApp } from "@material-ui/icons";
+import { logout } from "../../context/authContext/AuthActions";
+import { AuthContext } from "../../context/authContext/AuthContext";
+import { useContext } from "react";
 
 export default function Topbar() {
+  const { dispatch } = useContext(AuthContext);
+
   return (
     <div className="topbar">
       <div className="topbarWrapper">
@@ -19,9 +24,9 @@ export default function Topbar() {
             <span className="topIconBadge">2</span>
           </div>
           <div className="topbarIconContainer">
-            <Settings />
+            <ExitToApp onClick={() => dispatch(logout())} />
           </div>
-          <img src="https://images.pexels.com/photos/1526814/pexels-photo-1526814.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="" className="topAvatar" />
+          <img src="https://placebeard.it/500.500" alt="" className="topAvatar" />
         </div>
       </div>
     </div>

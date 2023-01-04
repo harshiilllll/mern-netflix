@@ -1,9 +1,7 @@
 import {
   CalendarToday,
-  LocationSearching,
   MailOutline,
   PermIdentity,
-  PhoneAndroid,
   Publish,
 } from "@material-ui/icons";
 import { Link, useLocation } from "react-router-dom";

@@ -17,7 +17,7 @@ export default function Listitem({ index, item }) {
         const res = await axios.get("/movies/find/" + item,
           {
             headers: {
-              token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYTQxNzViOTM1ZWYxODY1YmRjMDRmNCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3MjIzODY2NywiZXhwIjoxNjcyNjcwNjY3fQ.R99XRjYNMSy0jF7glDx9WVsDLYoVAeOcjTB8kEdf4yQ",
+              token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYjMxYjU1YTFjNjcyMmYzYjMwODZlYiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NzI2ODIzNDQsImV4cCI6MTY3Mzk3ODM0NH0.wg2Q0fvjJ6V2uC4dNnCyMvFmHfQHXnqd9zd3NByCXi8",
               'Access-Control-Allow-Origin': '*',
               'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
             }
@@ -30,8 +30,9 @@ export default function Listitem({ index, item }) {
     }
     getMovie();
   }, [item])
+  // console.log(movie);
   return (
-    <Link to={{ pathname: "/watch", movie: movie }}>
+    <Link to='/watch' state={{ movie: movie }}>
       <div
         className="listItem"
         style={{ left: isHovered && index * 225 - 40 + index * 2.5 }}
@@ -42,8 +43,8 @@ export default function Listitem({ index, item }) {
         
         
         {isHovered && (
-          <>
-            <video src={movie.trailer} autoPlay={true} loop />
+          <div>
+            <video src={movie.video} autoPlay={true} loop />
             <div className="itemInfo">
               <div className="icons">
                 <div>
@@ -56,7 +57,7 @@ export default function Listitem({ index, item }) {
                 </div>
               </div>
               <div className="itemInfoTop">
-                <span>{movie.duration}</span>
+                <span className="movie-title">{movie.title}</span>
                 <span className="age-limit">+{movie.limit}</span>
                 <span className="year">{movie.year}</span>
               </div>
@@ -65,7 +66,7 @@ export default function Listitem({ index, item }) {
               </div>
               <div className="genre">{movie.genre}</div>
             </div>
-          </>
+          </div>
         )}
       </div>
     </Link>

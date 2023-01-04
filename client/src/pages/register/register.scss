@@ -1,125 +1,212 @@
-
+@import '../../app.scss';
 
 .register {
     height: 100vh;
     width: 100vw;
-    background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,1)), url("https://assets.nflxext.com/ffe/siteui/vlv3/d0a0affb-1c76-4cf0-9d75-eb531f32458c/e81da519-216b-4341-b9e7-92d45398ddc3/IN-en-20221214-popsignuptwoweeks-perspective_alpha_website_medium.jpg");
+    background-color: var(--main-color);
     display: flex;
     flex-direction: column;
-    align-items: center;
     background-size: cover;
-
-    .top {
-        display: flex;
-        justify-content: space-between;
-        padding: 15px 50px;
-        align-items: center;
-        width: 100%;
-        position: sticky;
-        top: 0;
-  font-family: 'Ubuntu', sans-serif;
-
-
-        .logo {
-            height: 30px;
-            cursor: pointer;
-            color: var(--accent-color);
-            letter-spacing: 2px;
-            font-weight: 900;
-            transform: translateY(-5px);
-        }
-
-        .login-btn {
-            border: none;
-            outline: none;
-
-            cursor: pointer;
-            background-color: var(--accent-color);
-            color: var(--main-color);
-            font-weight: 700;
-            padding: 10px 25px;
-            font-size: 16px;
-            border-radius: 8px;
-            
-            &:hover {
-                background-color: var(--main-color);
-                color: var(--accent-color);
-                transition: all 125ms linear;
-            }
-        }
-    }
-
+  
     .container {
-        width: 70vw;
-        text-align: center;
-        color: white;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      font-family: "Ubuntu", sans-serif;
+
+      @include tablet {
         flex-direction: column;
-        font-family: 'Ubuntu', sans-serif;
+        height: auto;
+      }
+  
+      .side-panel {
+        width: 55%;
+        height: 100%;
+        background: linear-gradient(
+            to right,
+            var(--main-color) 0%,
+            rgba(0, 0, 0, 0) 40%,
+            var(--main-color)
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.7) 0%,
+            rgba(0, 0, 0, 0) 50%,
+            rgba(0, 0, 0, 0.7)
+          ),
+          url("https://i.pinimg.com/564x/3c/a8/35/3ca8350754c2f8b03a08023cd9509a2b.jpg");
+        background-size: cover;
+        background-position: center center;
+        display: flex;
+        align-items: center;
 
-        h1 {
-            font-size: 50px;
+        @include tablet {
+            width: 100%;
+            height: 30vh;
+          }
+  
+        .logo {
+          color: var(--accent-color);
+          letter-spacing: 2px;
+          font-family: "Ubuntu", sans-serif;
+          font-weight: 900;
+          font-size: 26px;
+          backdrop-filter: blur(7px);
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          // margin-left: 30px;
+          justify-content: center;
+  
+          img {
+            height: 70px;
+            cursor: default;
+            filter: drop-shadow(5px 8px rgba(0,0,0,0.3));
+
+            @include mini {
+                height: 48px;
+              }
+          }
+  
+          h1 {
+            cursor: default;
+            text-shadow: 2px 5px 8px rgba(0,0,0,0.9);
+
+            @include mobile {
+                font-size: 38px;
+              }
+    
+              @include mini {
+                font-size: 32px;
+              }
+          }
         }
+  
+        // .copy{ 
+        //   color: white;
+        // }
+      }
+  
+      .form {
+        width: 45%;
+        color: white;
+        height: 70vh;
+        padding: 50px;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        flex-direction: column;
+        border-radius: 4px;
+        gap: 20px;
+        background-color: var(--main-color);
 
+        @include tablet {
+            width: 100%;
+            height: 100%;
+          }
+  
         h2 {
-            font-size: 28px;
-            margin-top: 10px;
+          font-size: 34px;
+          margin-bottom: 20px;
         }
-
-        p{
-            font-size: 20px;
-            margin-top: 20px;
-            letter-spacing: 1px;
-        }
-
-        .input {
+  
+        .inputs {
+          display: flex;
+          gap: 15px;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          width: 100%;
+          position: relative;
+  
+          input {
             height: 50px;
             width: 100%;
-
-            display: flex;
-            width: 75%;
-            margin-top: 20px;
-
-            input{
-                flex: 9;
-                height: 100%;
-
-                outline: none;
-                border: none;
-                font-size: 22px;
-                padding-left: 10px;
-            }
-
-            .register-btn {
-                flex: 3;
-                height: 100%;
-
-                outline: none;
-                border: none;
-                background-color: var(--main-color);
-                color: var(--accent-color);
-                cursor: pointer;
-                font-size: 18px;
-                font-weight: 700;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 10px;
-
-                .icon {
-                    font-size: 16px;
-                    margin-bottom: 2px;
-                }
-                
-                &:hover {
-                    color: var(--main-color);
-                    background-color: var(--accent-color);
-                    transition: all 225ms ease-out;
-                }
-            }
+            border: none;
+            outline: none;
+            background-color: #333333;
+            border-radius: 4px;
+            padding-left: 50px;
+            font-size: 18px;
+            color: white;
+          }
+  
+          .icons {
+            position: absolute;
+            color: rgb(217, 217, 217);
+          }
+  
+          .person {
+            top: 12px;
+            left: 14px;
+          }
+          .email {
+            left: 14px;
+          }
+          .lock {
+            bottom: 14px;
+            left: 14px;
+          }
         }
+  
+        .register-btn {
+          height: 50px;
+          width: 100%;
+          border: none;
+          outline: none;
+          background-color: var(--accent-color);
+          border-radius: 4px;
+          font-size: 20px;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+  
+          &:hover {
+            background-color: var(--hover-color);
+            color: var(--accent-color);
+            transition: all 225ms linear;
+            cursor: pointer;
+          }
+        }
+  
+        .newto {
+          font-size: 18px;
+          color: lightgray;
+          display: flex;
+          gap: 5px;
+  
+          .link {
+            color: white;
+            font-weight: 600;
+            text-decoration: none;
+  
+            &:hover {
+              text-decoration: underline;
+              cursor: pointer;
+            }
+          }
+        }
+  
+        .captcha-info {
+          font-size: 14px;
+          color: lightgray;
+  
+          b {
+            color: white;
+            font-weight: 600;
+  
+            &:hover {
+              text-decoration: underline;
+              cursor: pointer;
+            }
+          }
+        }
+      }
     }
-}
+  }
+  

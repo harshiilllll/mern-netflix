@@ -30,7 +30,6 @@
     -webkit-backdrop-filter: blur(18.5px);
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-sizing: border-box;
-    z-index: 5000;
 
     img {
       height: 140px;
@@ -75,10 +74,18 @@
       color: rgb(219, 219, 219);
       font-weight: 600;
 
+      .movie-title {
+        font-size: 24px;
+      }
+
       .age-limit {
         border: 1px solid gray;
         padding: 1px 3px;
       }
+    }
+
+    .desc {
+      color: lightgray;
     }
 
     .genre {
