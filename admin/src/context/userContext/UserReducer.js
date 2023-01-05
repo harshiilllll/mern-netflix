@@ -38,45 +38,45 @@ const UserReducer = (state, action) => {
         error: true,
       };
 
-    // case "UPDATE_MOVIE_START":
-    //   return {
-    //     ...state,
-    //     isFetching: true,
-    //     error: false,
-    //   };
-    // case "UPDATE_MOVIE_SUCCESS":
-    //   return {
-    //     movies: state.movies.map(
-    //       (movie) => movie._id === action.payload._id && action.payload
-    //     ),
-    //     isFetching: false,
-    //     error: false,
-    //   };
-    // case "UPDATE_MOVIE_FAILURE":
-    //   return {
-    //     ...state,
-    //     isFetching: false,
-    //     error: true,
-    //   };
+    case "UPDATE_USER_START":
+      return {
+        ...state,
+        isFetching: true,
+        error: false,
+      };
+    case "UPDATE_USER_SUCCESS":
+      return {
+        users: state.users.map(
+          (user) => user._id === action.payload._id ? action.payload : user
+        ),
+        isFetching: false,
+        error: false,
+      };
+    case "UPDATE_USER_FAILURE":
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
 
-    // case "DELETE_MOVIE_START":
-    //   return {
-    //     ...state,
-    //     isFetching: true,
-    //     error: false,
-    //   };
-    // case "DELETE_MOVIE_SUCCESS":
-    //   return {
-    //     movies: state.movies.filter((movie) => movie._id !== action.payload),
-    //     isFetching: false,
-    //     error: false,
-    //   };
-    // case "DELETE_MOVIE_FAILURE":
-    //   return {
-    //     ...state,
-    //     isFetching: false,
-    //     error: true,
-    //   };
+    case "DELETE_USER_START":
+      return {
+        ...state,
+        isFetching: true,
+        error: false,
+      };
+    case "DELETE_USER_SUCCESS":
+      return {
+        users: state.users.filter((user) => user._id !== action.payload),
+        isFetching: false,
+        error: false,
+      };
+    case "DELETE_USER_FAILURE":
+      return {
+        ...state,
+        isFetching: false,
+        error: true,
+      };
     default:
       return { ...state };
   }

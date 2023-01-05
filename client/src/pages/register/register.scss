@@ -1,212 +1,217 @@
-@import '../../app.scss';
+@import "../../app.scss";
 
 .register {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--main-color);
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+
+  .container {
+    width: 100%;
     height: 100vh;
-    width: 100vw;
-    background-color: var(--main-color);
     display: flex;
-    flex-direction: column;
-    background-size: cover;
-  
-    .container {
-      width: 100%;
-      height: 100vh;
+    align-items: center;
+    font-family: "Ubuntu", sans-serif;
+
+    @include tablet {
+      flex-direction: column;
+      height: auto;
+    }
+
+    .side-panel {
+      width: 55%;
+      height: 100%;
+      background: linear-gradient(
+          to right,
+          var(--main-color) 0%,
+          rgba(0, 0, 0, 0) 40%,
+          var(--main-color)
+        ),
+        linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.7) 0%,
+          rgba(0, 0, 0, 0) 50%,
+          rgba(0, 0, 0, 0.7)
+        ),
+        url("https://i.pinimg.com/564x/3c/a8/35/3ca8350754c2f8b03a08023cd9509a2b.jpg");
+      background-size: cover;
+      background-position: center center;
       display: flex;
       align-items: center;
-      font-family: "Ubuntu", sans-serif;
 
       @include tablet {
-        flex-direction: column;
-        height: auto;
+        width: 100%;
+        height: 30vh;
       }
-  
-      .side-panel {
-        width: 55%;
+
+      .logo {
+        color: var(--accent-color);
+        letter-spacing: 2px;
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 900;
+        font-size: 26px;
+        backdrop-filter: blur(7px);
         height: 100%;
-        background: linear-gradient(
-            to right,
-            var(--main-color) 0%,
-            rgba(0, 0, 0, 0) 40%,
-            var(--main-color)
-          ),
-          linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 0.7) 0%,
-            rgba(0, 0, 0, 0) 50%,
-            rgba(0, 0, 0, 0.7)
-          ),
-          url("https://i.pinimg.com/564x/3c/a8/35/3ca8350754c2f8b03a08023cd9509a2b.jpg");
-        background-size: cover;
-        background-position: center center;
+        width: 100%;
         display: flex;
         align-items: center;
+        gap: 10px;
+        // margin-left: 30px;
+        justify-content: center;
 
-        @include tablet {
-            width: 100%;
-            height: 30vh;
-          }
-  
-        .logo {
-          color: var(--accent-color);
-          letter-spacing: 2px;
-          font-family: "Ubuntu", sans-serif;
-          font-weight: 900;
-          font-size: 26px;
-          backdrop-filter: blur(7px);
-          height: 100%;
-          width: 100%;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          // margin-left: 30px;
-          justify-content: center;
-  
-          img {
-            height: 70px;
-            cursor: default;
-            filter: drop-shadow(5px 8px rgba(0,0,0,0.3));
+        img {
+          height: 70px;
+          cursor: default;
+          filter: drop-shadow(5px 8px rgba(0, 0, 0, 0.3));
 
-            @include mini {
-                height: 48px;
-              }
-          }
-  
-          h1 {
-            cursor: default;
-            text-shadow: 2px 5px 8px rgba(0,0,0,0.9);
-
-            @include mobile {
-                font-size: 38px;
-              }
-    
-              @include mini {
-                font-size: 32px;
-              }
+          @include mini {
+            height: 48px;
           }
         }
-  
-        // .copy{ 
-        //   color: white;
-        // }
+
+        h1 {
+          cursor: default;
+          text-shadow: 2px 5px 8px rgba(0, 0, 0, 0.9);
+
+          @include mobile {
+            font-size: 38px;
+          }
+
+          @include mini {
+            font-size: 32px;
+          }
+        }
       }
-  
-      .form {
-        width: 45%;
-        color: white;
-        height: 70vh;
-        padding: 50px;
-        display: flex;
-        justify-content: space-around;
-        align-items: flex-start;
-        flex-direction: column;
-        border-radius: 4px;
-        gap: 20px;
-        background-color: var(--main-color);
 
-        @include tablet {
-            width: 100%;
-            height: 100%;
-          }
-  
-        h2 {
-          font-size: 34px;
-          margin-bottom: 20px;
-        }
-  
-        .inputs {
-          display: flex;
-          gap: 15px;
-          align-items: center;
-          justify-content: center;
-          flex-direction: column;
-          width: 100%;
-          position: relative;
-  
-          input {
-            height: 50px;
-            width: 100%;
-            border: none;
-            outline: none;
-            background-color: #333333;
-            border-radius: 4px;
-            padding-left: 50px;
-            font-size: 18px;
-            color: white;
-          }
-  
-          .icons {
-            position: absolute;
-            color: rgb(217, 217, 217);
-          }
-  
-          .person {
-            top: 12px;
-            left: 14px;
-          }
-          .email {
-            left: 14px;
-          }
-          .lock {
-            bottom: 14px;
-            left: 14px;
-          }
-        }
-  
-        .register-btn {
+      // .copy{
+      //   color: white;
+      // }
+    }
+
+    .form {
+      width: 45%;
+      color: white;
+      height: 70vh;
+      padding: 50px;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      flex-direction: column;
+      border-radius: 4px;
+      gap: 20px;
+      background-color: var(--main-color);
+
+      @include tablet {
+        width: 100%;
+        height: 100%;
+      }
+
+      h2 {
+        font-size: 34px;
+        margin-bottom: 20px;
+      }
+
+      .inputs {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        position: relative;
+
+        input {
           height: 50px;
           width: 100%;
           border: none;
           outline: none;
-          background-color: var(--accent-color);
+          background-color: #333333;
           border-radius: 4px;
-          font-size: 20px;
+          padding-left: 50px;
+          font-size: 18px;
+          color: white;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background-color: #444;
+          }
+        }
+
+        .icons {
+          position: absolute;
+          color: rgb(217, 217, 217);
+        }
+
+        .person {
+          top: 12px;
+          left: 14px;
+        }
+        .email {
+          left: 14px;
+        }
+        .lock {
+          bottom: 14px;
+          left: 14px;
+        }
+      }
+
+      .register-btn {
+        height: 50px;
+        width: 100%;
+        border: none;
+        outline: none;
+        background-color: var(--accent-color);
+        border-radius: 4px;
+        font-size: 20px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        &:hover {
+          background-color: var(--hover-color);
+          color: var(--accent-color);
+          transition: all 225ms linear;
+          cursor: pointer;
+        }
+      }
+
+      .newto {
+        font-size: 18px;
+        color: lightgray;
+        display: flex;
+        gap: 5px;
+
+        .link {
+          color: white;
           font-weight: 600;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-  
+          text-decoration: none;
+
           &:hover {
-            background-color: var(--hover-color);
-            color: var(--accent-color);
-            transition: all 225ms linear;
+            text-decoration: underline;
             cursor: pointer;
           }
         }
-  
-        .newto {
-          font-size: 18px;
-          color: lightgray;
-          display: flex;
-          gap: 5px;
-  
-          .link {
-            color: white;
-            font-weight: 600;
-            text-decoration: none;
-  
-            &:hover {
-              text-decoration: underline;
-              cursor: pointer;
-            }
-          }
-        }
-  
-        .captcha-info {
-          font-size: 14px;
-          color: lightgray;
-  
-          b {
-            color: white;
-            font-weight: 600;
-  
-            &:hover {
-              text-decoration: underline;
-              cursor: pointer;
-            }
+      }
+
+      .captcha-info {
+        font-size: 14px;
+        color: lightgray;
+
+        b {
+          color: white;
+          font-weight: 600;
+
+          &:hover {
+            text-decoration: underline;
+            cursor: pointer;
           }
         }
       }
     }
   }
-  
+}

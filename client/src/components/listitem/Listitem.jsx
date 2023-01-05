@@ -32,14 +32,14 @@ export default function Listitem({ index, item }) {
   }, [item])
   // console.log(movie);
   return (
-    <Link to='/watch' state={{ movie: movie }}>
+    <Link to='/watchdetail' state={{ movie: movie }}>
       <div
         className="listItem"
         style={{ left: isHovered && index * 225 - 40 + index * 2.5 }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <img src={movie.imgSm} alt="movie" />
+        <img src={movie.imgSm} alt={movie.title} />
         
         
         {isHovered && (

@@ -6,6 +6,7 @@ import Home from "./pages/home/Home";
 import Watch from "./pages/watch/Watch";
 import React, { useContext } from "react";
 import { AuthContext } from "./authContext/AuthContext";
+import WatchDetail from "./pages/watch Detail/WatchDetail";
 
 function App() {
   const {user} = useContext(AuthContext);
@@ -25,6 +26,7 @@ function App() {
             <Route path="/movies" element={<Home type="movie" />} />
             <Route path="/series" element={<Home type="series" />} />
             <Route path="/watch" element={<Watch />} />
+            <Route path="/watchdetail" element={<WatchDetail />} />
           </React.Fragment>
         )}
       </Routes>

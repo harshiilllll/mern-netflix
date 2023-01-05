@@ -2,7 +2,7 @@ import "./userList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { getUsers } from "../../context/userContext/apiCalls";
+import { deleteUser, getUsers } from "../../context/userContext/apiCalls";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../context/userContext/UserContext";
 
@@ -13,7 +13,9 @@ export default function UserList() {
     getUsers(dispatch);
   }, [dispatch]);
 
-  const handleDelete = (id) => {};
+  const handleDelete = (id) => {
+    deleteUser(id, dispatch)
+  };
 
   const columns = [
     { field: "_id", sort: "desc", headerName: "ID", width: 240 },
@@ -52,7 +54,7 @@ export default function UserList() {
             </Link>
             <DeleteOutline
               className="userListDelete"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row._id)}
             />
           </>
         );

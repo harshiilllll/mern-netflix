@@ -7,7 +7,7 @@ export default function Watch() {
   const movie = location.state.movie;
   return (
     <div className="watch">
-      <Link to="/">
+      <Link to="/watchdetail" state={{ movie: movie }}>
         <div className="back">
           <ArrowBackIcon />
           Home

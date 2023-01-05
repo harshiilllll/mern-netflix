@@ -21,26 +21,26 @@ export const createUserFailure = () => ({
   type: "CREATE_USER_FAILURE",
 });
 
-// //update
-// export const updateMovieStart = () => ({
-//   type: "UPDATE_MOVIE_START",
-// });
-// export const updateMovieSuccess = (movie) => ({
-//   type: "UPDATE_MOVIE_SUCCESS",
-//   payload: movie,
-// });
-// export const updateMovieFailure = () => ({
-//   type: "UPDATE_MOVIE_FAILURE",
-// });
+//update
+export const updateUserStart = () => ({
+  type: "UPDATE_USER_START",
+});
+export const updateUserSuccess = (user, id) => ({
+  type: "UPDATE_USER_SUCCESS",
+  payload: { user, id },
+});
+export const updateUserFailure = () => ({
+  type: "UPDATE_USER_FAILURE",
+});
 
-// //delete
-// export const deleteMovieStart = () => ({
-//   type: "DELETE_MOVIE_START",
-// });
-// export const deleteMovieSuccess = (id) => ({
-//   type: "DELETE_MOVIE_SUCCESS",
-//   payload: id,
-// });
-// export const deleteMovieFailure = () => ({
-//   type: "DELETE_MOVIE_FAILURE",
-// });
+//delete
+export const deleteUserStart = () => ({
+  type: "DELETE_USER_START",
+});
+export const deleteUserSuccess = (id) => ({
+  type: "DELETE_USER_SUCCESS",
+  payload: id,
+});
+export const deleteUserFailure = () => ({
+  type: "DELETE_USER_FAILURE",
+});

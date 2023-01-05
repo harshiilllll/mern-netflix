@@ -4,10 +4,40 @@ import {
   PermIdentity,
   Publish,
 } from "@material-ui/icons";
-import { Link, useLocation } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useHistory, useLocation } from "react-router-dom";
+import { UserContext } from "../../context/userContext/UserContext";
+import { updateUser } from "../../context/userContext/apiCalls";
+
 import "./user.css";
 
 export default function User() {
+  const [updatedUser, setUpdatedUser] = useState(null);
+
+  const {dispatch} = useContext(UserContext)
+
+  const history = useHistory();
+
+  // const handleChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setUpdateUser({
+  //     ...updateUser,
+  //     [name]: name === "isAdmin" && value === "true" ? true : value
+  //   });
+  //   console.log(updateUser);
+  // }
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setUpdatedUser({ ...updatedUser, [e.target.name]: value });
+  };
+  console.log(updatedUser);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateUser(user._id, dispatch, updatedUser)
+    history.push("/users")
+  }
 
   const location = useLocation();
   const user = location.user;
@@ -90,6 +120,8 @@ export default function User() {
                   type="text"
                   placeholder={user.username}
                   className="userUpdateInput"
+                  name="username"
+                  onChange={handleChange}
                 />
               </div>
               <div className="userUpdateItem">
@@ -98,17 +130,21 @@ export default function User() {
                   type="text"
                   placeholder={user.email}
                   className="userUpdateInput"
+                  name="email"
+                  onChange={handleChange}
                 />
               </div>
               <div className="userUpdateItem">
-                <label>Profile Pic</label>
+                <label>Password</label>
                 <input
                   type="text"
-                  placeholder={user.proFilepic}
+                  placeholder="password"
                   className="userUpdateInput"
+                  name="password"
+                  onChange={handleChange}
                 />
               </div>
-              <button className="userUpdateButton">Update</button>
+              <button className="userUpdateButton" onClick={handleSubmit}>Update</button>
             </div>
             <div className="userUpdateRight">
               <div className="userUpdateUpload">

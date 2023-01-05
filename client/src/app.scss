@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Ubuntu:wght@400;700&display=swap");
 :root {
-  --main-color: #0b0b0b;
+  --main-color: #202125;
   --accent-color: #FFA500;
   --hover-color: #222;
 }
@@ -29,7 +29,7 @@ link {
 }
 
 @mixin mini {
-  @media (max-width: 380px) {
+  @media (max-width: 3) {
     @content;
   }
 }

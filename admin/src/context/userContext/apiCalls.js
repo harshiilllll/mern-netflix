@@ -1,23 +1,17 @@
 import axios from "axios";
 import {
-  createMovieFailure,
-  createMovieStart,
-  createMovieSuccess,
   createUserFailure,
   createUserStart,
   createUserSuccess,
-  deleteMovieFailure,
-  deleteMovieStart,
-  deleteMovieSuccess,
-  getMoviesFailure,
-  getMoviesStart,
-  getMoviesSuccess,
+  deleteUserFailure,
+  deleteUserStart,
+  deleteUserSuccess,
   getUsersFailure,
   getUsersStart,
   getUsersSuccess,
-  updateMovieFailure,
-  updateMovieStart,
-  updateMovieSuccess,
+  updateUserFailure,
+  updateUserStart,
+  updateUserSuccess,
 } from "./UserActions";
 
 export const getUsers = async (dispatch) => {
@@ -45,32 +39,32 @@ export const createUser = async (user, dispatch) => {
   }
 };
 
-// //update
-// export const updateMovie = async (movie, dispatch) => {
-//   dispatch(updateMovieStart());
-//   try {
-//     const res = await axios.put("/movies" , movie, {
-//       headers: {
-//         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-//       },
-//     });
-//     dispatch(updateMovieSuccess(res.data));
-//   } catch (err) {
-//     dispatch(updateMovieFailure());
-//   }
-// };
+//update
+export const updateUser = async (id, dispatch, user) => {
+  dispatch(updateUserStart());
+  try {
+    const res = await axios.put("/users/" + id , user, {
+      headers: {
+        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+      },
+    });
+    dispatch(updateUserSuccess({ user: res.data, id }));
+  } catch (err) {
+    dispatch(updateUserFailure());
+  }
+};
 
-// //delete
-// export const deleteMovie = async (id, dispatch) => {
-//   dispatch(deleteMovieStart());
-//   try {
-//     await axios.delete("/movies/" + id, {
-//       headers: {
-//         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-//       },
-//     });
-//     dispatch(deleteMovieSuccess(id));
-//   } catch (err) {
-//     dispatch(deleteMovieFailure());
-//   }
-// };
+//delete
+export const deleteUser = async (id, dispatch) => {
+  dispatch(deleteUserStart());
+  try {
+    await axios.delete("/users/" + id, {
+      headers: {
+        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+      },
+    });
+    dispatch(deleteUserSuccess(id));
+  } catch (err) {
+    dispatch(deleteUserFailure());
+  }
+};

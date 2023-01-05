@@ -132,6 +132,10 @@
           padding-left: 50px;
           font-size: 18px;
           color: white;
+
+          &:hover , &:active , &:focus {
+            background-color: #444;
+          }
         }
 
         .icons {
