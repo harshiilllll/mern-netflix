@@ -1,11 +1,12 @@
 import "./userList.css";
-import { DataGrid } from "@material-ui/data-grid";
-import { DeleteOutline } from "@material-ui/icons";
+import { DataGrid } from "@mui/x-data-grid";
+import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { deleteUser, getUsers } from "../../context/userContext/apiCalls";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/userContext/UserContext";
 import Loader from "../../components/loader/Loader";
+import { Box } from "@mui/material";
 
 export default function UserList() {
   const { users, dispatch } = useContext(UserContext);
@@ -13,20 +14,28 @@ export default function UserList() {
 
   useEffect(() => {
     setIsLoading(true); // added this line
-    getUsers(dispatch)
-      .then(() => setIsLoading(false)) // added this line
+    getUsers(dispatch).then(() => setIsLoading(false)); // added this line
   }, [dispatch]);
 
   const handleDelete = (id) => {
-    deleteUser(id, dispatch)
+    deleteUser(id, dispatch);
   };
 
   const columns = [
-    { field: "_id", sort: "desc", headerName: "ID", width: 240 },
+    {
+      field: "_id",
+      sort: "desc",
+      cellClassName: "cell",
+      headerClassName: "header-cell",
+      headerName: "ID",
+      width: 200
+    },
     {
       field: "username",
       headerName: "Username",
-      width: 250,
+      cellClassName: "cell",
+      headerClassName: "header-cell",
+      width: 200,
       renderCell: (params) => {
         return (
           <div className="userListUser">
@@ -43,11 +52,18 @@ export default function UserList() {
         );
       },
     },
-    { field: "email", headerName: "Email", width: 260 },
+    {
+      field: "email",
+      cellClassName: "cell",
+      headerClassName: "header-cell",
+      headerName: "Email",
+      width: 200,
+    },
     {
       field: "action",
       headerName: "Action",
-      width: 150,
+      headerClassName: "header-cell",
+      width: 100,
       renderCell: (params) => {
         return (
           <>
@@ -67,22 +83,49 @@ export default function UserList() {
   ];
 
   return (
-    <div className="userList">
-      {isLoading ? <Loader /> : ( // added this line
-        <>
-          <Link to="/newuser">
-            <button className="productAddButton">Add User</button>
-          </Link>
+    <>
+      {isLoading ? (
+        <Loader /> // added this line
+      ) : (
+        <Box
+          m="40px 0 0 0"
+          height="75vh"
+          width="83vw"
+          sx={{
+            "& .MuiDataGrid-root": {
+              border: "none",
+            },
+            "& .MuiDataGrid-cell": {
+              borderBottom: "none",
+            },
+            "& .name-column--cell": {
+              color: "#94e2cd",
+            },
+            "& .MuiDataGrid-columnHeaders": {
+              backgroundColor: "#3e4396",
+              borderBottom: "none",
+            },
+            "& .MuiDataGrid-virtualScroller": {
+              backgroundColor: "#1F2A40",
+            },
+            "& .MuiDataGrid-footerContainer": {
+              borderTop: "none",
+              backgroundColor: "#3e4396",
+              color: "#FFFFFF"
+            },
+            "& .MuiCheckbox-root": {
+              color: "#b7ebde !important",
+            },
+          }}
+        >
           <DataGrid
-            rows={users}
-            disableSelectionOnClick
-            columns={columns}
-            pageSize={10}
             checkboxSelection
+            rows={users}
+            columns={columns}
             getRowId={(r) => r._id}
           />
-        </>
+        </Box>
       )}
-    </div>
+    </>
   );
 }

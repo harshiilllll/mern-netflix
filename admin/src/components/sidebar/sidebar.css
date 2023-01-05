@@ -1,20 +1,23 @@
 .sidebar {
-  flex: 1;
-  height: calc(100vh - 50px);
-  background-color: rgb(251, 251, 255);
-  position: sticky;
+  height: calc(100vh - 51px);
+  background-color: var(--main-color);
+  position: -webkit-sticky;
   top: 50px;
+  width: 200px;
 }
 
 .sidebarWrapper {
   padding: 20px;
   color: #555;
-  max-width: 140px;
-  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .sidebarMenu {
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .sidebarTitle {
@@ -23,16 +26,19 @@
 }
 
 .sidebarList {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   list-style: none;
   padding: 5px;
 }
 
 .sidebarListItem {
-  padding: 5px;
+  padding: 5px 10px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 18px;
 }
 
 .sidebarListItem.active,

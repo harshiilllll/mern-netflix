@@ -1,11 +1,20 @@
 :root {
-  --main: #fff;
-  --accent: #000;
+  --back-color: #070d19;
+  --main-color: #0c1427;
+  --border-color: #0f1a34;
+  --accent-color: #727cf5;
+  --font-color: #FFFFFF;
+
+  --border-radius: 1px; 
+}
+body {
+  overflow: hidden;
 }
 
 .container {
   display: flex;
-  margin-top: 10px;
+  gap: 20px;
+  background-color: var(--back-color);
 }
 
 .link {
