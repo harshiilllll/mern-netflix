@@ -16,6 +16,9 @@ export default function Login() {
   return (
     <div className="login">
       <form className="loginForm">
+      <h2>Admin Login</h2>
+      <div className="inputs">
+
         <input
           type="text"
           placeholder="email"
@@ -28,11 +31,12 @@ export default function Login() {
           className="loginInput"
           onChange={(e) => setPassword(e.target.value)}
         />
+          </div>
         <button
           className="loginButton"
           onClick={handleLogin}
           disabled={isFetching}
-        >
+          >
           Login
         </button>
       </form>

@@ -53,7 +53,11 @@ const Navbar = () => {
             <ArrowDropDownIcon className="icon" />
             <div className="options">
               <span>Settings</span>
-              <span onClick={() => dispatch(logout())}>Logout</span>
+              <span onClick={() => {
+                if (window.confirm("Are u sure u want to logout?")) {
+                  dispatch(logout());
+                }
+              }}>Logout</span>
             </div>
           </div>
         </div>

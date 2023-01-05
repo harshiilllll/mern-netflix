@@ -2,8 +2,8 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { login } from "../../authContext/apiCalls";
 import { AuthContext } from "../../authContext/AuthContext";
-import PersonIcon from '@mui/icons-material/Person';
 import LockIcon from '@mui/icons-material/Lock';
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import LoginIcon from '@mui/icons-material/Login';
 
 import "./login.scss";
@@ -34,7 +34,7 @@ const Login = () => {
         <form className="form">
           <h2>Sign In</h2>
           <div className="inputs">
-            <PersonIcon className="icons person" />
+            <AlternateEmailIcon className="icons person" />
             <input
               type="email"
               placeholder="Email"

@@ -4,9 +4,11 @@ import { NotificationsNone, Language, ExitToApp } from "@material-ui/icons";
 import { logout } from "../../context/authContext/AuthActions";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { useContext } from "react";
+import { Link, useHistory } from "react-router-dom";
 
 export default function Topbar() {
   const { dispatch } = useContext(AuthContext);
+  const history = useHistory();
 
   return (
     <div className="topbar">
@@ -15,18 +17,32 @@ export default function Topbar() {
           <span className="logo">harshiladmin</span>
         </div>
         <div className="topRight">
-          <div className="topbarIconContainer">
+          {/* <div className="topbarIconContainer">
             <NotificationsNone />
             <span className="topIconBadge">2</span>
           </div>
           <div className="topbarIconContainer">
             <Language />
             <span className="topIconBadge">2</span>
-          </div>
+          </div> */}
           <div className="topbarIconContainer">
-            <ExitToApp onClick={() => dispatch(logout())} />
+            <Link
+              style={{color: 'black'}}
+              onClick={() => {
+                if (window.confirm("Are u sure u want to logout?")) {
+                  dispatch(logout());
+                  history.push("/login");
+                }
+              }}
+            >
+              <ExitToApp />
+            </Link>
           </div>
-          <img src="https://placebeard.it/500.500" alt="" className="topAvatar" />
+          {/* <img
+            src={"https://placebeard.it/500.500"}
+            alt=""
+            className="topAvatar"
+          /> */}
         </div>
       </div>
     </div>

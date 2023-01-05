@@ -9,6 +9,17 @@
 .loginForm {
   display: flex;
   flex-direction: column;
+  gap: 20px;
+  width: 300px;
+  padding: 30px;
+  background-color: #eee;
+  border-radius: 8px;
+  box-shadow: 0px 2px 20px 5px rgba(0 0 0 / 20%);
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
 }
 
 .loginInput {

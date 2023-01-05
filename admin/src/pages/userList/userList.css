@@ -5,6 +5,7 @@
 .userListUser {
   display: flex;
   align-items: center;
+  font-weight: 600;
 }
 
 .userListImg {

@@ -3,20 +3,23 @@ import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { MovieContext } from "../../context/movieContext/MovieContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { deleteMovie, getMovies } from "../../context/movieContext/apiCalls";
 import { useContext } from "react";
+import Loader from "../../components/loader/Loader";
 
 export default function ProductList() {
+  const [isLoading, setIsLoading] = useState(false); // added this line
   const { movies, dispatch } = useContext(MovieContext);
 
   useEffect(() => {
-    getMovies(dispatch);
+    setIsLoading(true); // added this line
+    getMovies(dispatch).then(() => setIsLoading(false)); // added this line
   }, [dispatch]);
 
   const handleDelete = (id) => {
     // setData(data.filter((item) => item.id !== id));
-    deleteMovie(id, dispatch)
+    deleteMovie(id, dispatch);
   };
 
   const columns = [
@@ -46,7 +49,9 @@ export default function ProductList() {
       renderCell: (params) => {
         return (
           <>
-            <Link to={{pathname: "/product/" + params.row._id , movie: params.row}}>
+            <Link
+              to={{ pathname: "/product/" + params.row._id, movie: params.row }}
+            >
               <button className="productListEdit">Edit</button>
             </Link>
             <DeleteOutline
@@ -61,17 +66,23 @@ export default function ProductList() {
 
   return (
     <div className="productList">
-      <Link to="/newproduct">
-          <button className="productAddButton">Upload Movie</button>
-        </Link>
-      <DataGrid
-        rows={movies}
-        disableSelectionOnClick
-        columns={columns}
-        pageSize={10}
-        checkboxSelection
-        getRowId={(r) => r._id}
-      />
+      {isLoading ? (
+        <Loader /> // added this line
+      ) : (
+        <>
+          <Link to="/newproduct">
+            <button className="productAddButton">Upload Movie</button>
+          </Link>
+          <DataGrid
+            rows={movies}
+            disableSelectionOnClick
+            columns={columns}
+            pageSize={10}
+            checkboxSelection
+            getRowId={(r) => r._id}
+          />
+        </>
+      )}
     </div>
   );
 }

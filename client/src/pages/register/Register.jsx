@@ -18,12 +18,13 @@ const Register = () => {
   const passwordRef = useRef();
   const usernameRef = useRef();
 
+
   const handleStart = (e) => {
     e.preventDefault();
     setEmail(emailRef.current.value);
     setPassword(passwordRef.current.value);
     setUsername(usernameRef.current.value);
-    console.log(username + " " + password + " " + email);
+
   };
 
   const handleRegister = async (e) => {
@@ -37,37 +38,6 @@ const Register = () => {
   };
 
   return (
-    // <div className="register">
-    //   <div className="top">
-    //     <h1 className="logo">NETFLIX</h1>
-    //     <Link to="/login" className="login-btn">
-    //       Sign In
-    //     </Link>
-    //   </div>
-    //   <div className="container">
-    //     <h1>Unlimited Movies, TV shows, and more.</h1>
-    //     <h2>Watch anywhere, Cancel anytime.</h2>
-    //     <p>
-    //       Ready to watch? Enter your email to create or restart your membership.
-    //     </p>
-    //     <form className="input">
-    // <input type="email" placeholder="Email address" ref={emailRef} />
-    // <input type="text" placeholder="Username" ref={usernameRef} />
-    // <input type="password" placeholder="Password" ref={passwordRef} />
-
-          // {!username || !email || !password ? (
-          //   <button className="register-btn" onClick={handleStart}>
-          //     Get Started
-          //     <ArrowForwardIosIcon className="icon" />
-          //   </button>
-          // ) : (
-          //   <button className="register-btn" onClick={handleRegister}>
-          //     Start
-          //   </button>
-          // )}
-    //     </form>
-    //   </div>
-    // </div>
 
     <div className="register">
       <div className="container">
@@ -78,7 +48,6 @@ const Register = () => {
               alt="logo"
             />
             <h1>NARUTO</h1>
-            {/* <span className="copy">Copyright &copy; Harshil</span> */}
           </div>
           <div></div>
         </div>
@@ -86,11 +55,11 @@ const Register = () => {
           <h2>Sign Up</h2>
           <div className="inputs">
             <PersonIcon className="icons person" />
-            <input type="text" placeholder="Username" ref={usernameRef} />
+            <input type="text" placeholder="Username" ref={usernameRef} required />
             <AlternateEmailIcon className="icons email" />
-            <input type="email" placeholder="Email address" ref={emailRef} />
+            <input type="email" placeholder="Email address" ref={emailRef} required />
             <LockIcon className="icons lock" />
-            <input type="password" placeholder="Password" ref={passwordRef} />
+            <input type="password" placeholder="Password" ref={passwordRef} required />
           </div>
           {!username || !email || !password ? (
             <button className="register-btn" onClick={handleStart}>

@@ -2,20 +2,22 @@ import "./listList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { ListContext } from "../../context/listContext/ListContext";
 import { deleteList, getLists } from "../../context/listContext/apiCalls";
+import Loader from "../../components/loader/Loader";
 
 export default function ListList() {
+  const [isLoading, setIsLoading] = useState(false); // added this line
   const { lists, dispatch } = useContext(ListContext);
 
   useEffect(() => {
-    getLists(dispatch);
+    setIsLoading(true); // added this line
+    getLists(dispatch).then(() => setIsLoading(false));
   }, [dispatch]);
 
   const handleDelete = (id) => {
-    deleteList(id, dispatch)
+    deleteList(id, dispatch);
   };
 
   const columns = [
@@ -31,7 +33,9 @@ export default function ListList() {
       renderCell: (params) => {
         return (
           <>
-            <Link to={{pathname: "/list/" + params.row._id , list: params.row}}>
+            <Link
+              to={{ pathname: "/list/" + params.row._id, list: params.row }}
+            >
               <button className="productListEdit">Edit</button>
             </Link>
             <DeleteOutline
@@ -46,17 +50,23 @@ export default function ListList() {
 
   return (
     <div className="productList">
-      <Link to="/newlist">
-          <button className="productAddButton">Create List</button>
-        </Link>
-      <DataGrid
-        rows={lists}
-        disableSelectionOnClick
-        columns={columns}
-        pageSize={10}
-        checkboxSelection
-        getRowId={(r) => r._id}
-      />
+      {isLoading ? (
+        <Loader /> // added this line
+      ) : (
+        <>
+          <Link to="/newlist">
+            <button className="productAddButton">Create List</button>
+          </Link>
+          <DataGrid
+            rows={lists}
+            disableSelectionOnClick
+            columns={columns}
+            pageSize={10}
+            checkboxSelection
+            getRowId={(r) => r._id}
+          />
+        </>
+      )}
     </div>
   );
 }

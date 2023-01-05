@@ -3,14 +3,18 @@ import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { deleteUser, getUsers } from "../../context/userContext/apiCalls";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/userContext/UserContext";
+import Loader from "../../components/loader/Loader";
 
 export default function UserList() {
   const { users, dispatch } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(false); // added this line
 
   useEffect(() => {
-    getUsers(dispatch);
+    setIsLoading(true); // added this line
+    getUsers(dispatch)
+      .then(() => setIsLoading(false)) // added this line
   }, [dispatch]);
 
   const handleDelete = (id) => {
@@ -64,17 +68,21 @@ export default function UserList() {
 
   return (
     <div className="userList">
-      <Link to="/newuser">
-          <button className="productAddButton">Add User</button>
-        </Link>
-      <DataGrid
-        rows={users}
-        disableSelectionOnClick
-        columns={columns}
-        pageSize={10}
-        checkboxSelection
-        getRowId={(r) => r._id}
-      />
+      {isLoading ? <Loader /> : ( // added this line
+        <>
+          <Link to="/newuser">
+            <button className="productAddButton">Add User</button>
+          </Link>
+          <DataGrid
+            rows={users}
+            disableSelectionOnClick
+            columns={columns}
+            pageSize={10}
+            checkboxSelection
+            getRowId={(r) => r._id}
+          />
+        </>
+      )}
     </div>
   );
 }

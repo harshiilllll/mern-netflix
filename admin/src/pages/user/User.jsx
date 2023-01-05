@@ -35,8 +35,10 @@ export default function User() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateUser(user._id, dispatch, updatedUser)
-    history.push("/users")
+    if (window.confirm("Are you sure you want to update?")){
+      updateUser(user._id, dispatch, updatedUser)
+      history.push("/users")
+    }
   }
 
   const location = useLocation();
