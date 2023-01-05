@@ -1,6 +1,6 @@
 import React from "react";
 import "./topbar.css";
-import { NotificationsNone, Language, ExitToApp } from "@material-ui/icons";
+import { ExitToApp } from "@mui/icons-material";
 import { logout } from "../../context/authContext/AuthActions";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { useContext } from "react";
@@ -27,7 +27,7 @@ export default function Topbar() {
           </div> */}
           <div className="topbarIconContainer">
             <Link
-              style={{color: 'black'}}
+              className="logout-btn"
               onClick={() => {
                 if (window.confirm("Are u sure u want to logout?")) {
                   dispatch(logout());

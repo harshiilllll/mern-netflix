@@ -1,11 +1,12 @@
 .topbar {
   width: 100%;
   height: 50px;
-  background-color: var(--main);
+  background-color: var(--main-color);
   position: sticky;
   top: 0;
   z-index: 999;
-  color: var(--accent);
+  color: var(--font-color);
+  border-bottom: 1px solid var(--accent-color);
 }
 
 .topbarWrapper {
@@ -19,7 +20,7 @@
 .logo {
   font-weight: bold;
   font-size: 30px;
-  color: #3498db;
+  color: var(--font-color);
   cursor: pointer;
 }
 
@@ -31,28 +32,12 @@
 .topbarIconContainer {
   position: relative;
   cursor: pointer;
-  margin-right: 10px;
-  color: #555;
 }
 
-.topIconBadge{
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    top: -5px;
-    right: 0px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
+.logout-btn {
+  color: white;
+}
+.logout-btn:hover {
+  color: rgb(165, 165, 165);
 }
 
-.topAvatar{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-}

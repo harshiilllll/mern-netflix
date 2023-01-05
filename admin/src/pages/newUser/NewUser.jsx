@@ -76,11 +76,11 @@ export default function NewProduct() {
   }
 
   return (
-    <div className="newProduct">
-      <h1 className="addProductTitle">Add User</h1>
+    <div className="newUser">
+      <h1 className="addUserTitle">Add User</h1>
       {uploadProgress}
-      <form className="addProductForm">
-        <div className="addProductItem">
+      <form className="addUserForm">
+        <div className="addUserItem">
           <label>Username</label>
           <input
             type="text"
@@ -89,7 +89,7 @@ export default function NewProduct() {
             onChange={handleChange}
           />
         </div>
-        <div className="addProductItem">
+        <div className="addUserItem">
           <label>Email</label>
           <input
             type="text"
@@ -98,7 +98,7 @@ export default function NewProduct() {
             onChange={handleChange}
           />
         </div>
-        <div className="addProductItem">
+        <div className="addUserItem">
           <label>Password</label>
           <input
             type="text"
@@ -107,14 +107,14 @@ export default function NewProduct() {
             onChange={handleChange}
           />
         </div>
-        <div className="addProductItem">
+        <div className="addUserItem">
           <label>Is Admin</label>
-          <select id="isAdmin" onChange={handleChange} name="isAdmin">
+          <select id="isAdmin" className="addUserSelect" onChange={handleChange} name="isAdmin">
             <option value="true">Yes</option>
             <option value="false">No</option>
           </select>
         </div>
-        <div className="addProductItem">
+        <div className="addUserItem">
           <label>Profile pic</label>
           <input
             type="file"
@@ -123,9 +123,9 @@ export default function NewProduct() {
           />
         </div>
         {uploaded === 1 ? (
-          <button className="addProductButton" onClick={handleSubmit}>Create</button>
+          <button className="addUserButton" onClick={handleSubmit}>Create</button>
         ) : (
-          <button className="addProductButton" onClick={handleUpload}>
+          <button className="addUserButton" onClick={handleUpload}>
             Upload
           </button>
         )}

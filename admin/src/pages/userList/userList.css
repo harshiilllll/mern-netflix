@@ -1,10 +1,11 @@
 .userList {
-  flex: 4;
+  color: white;
 }
 
 .userListUser {
   display: flex;
   align-items: center;
+  color: white;
   font-weight: 600;
 }
 
@@ -33,4 +34,15 @@
 
 .productAddButton{
   margin-bottom: 20px;
+}
+
+.header-cell {
+  color: white;
+  font-weight: 700;
+}
+
+
+.MuiDataGrid-root .MuiDataGrid-cell {
+  border: none !important;
+  color: white;
 }

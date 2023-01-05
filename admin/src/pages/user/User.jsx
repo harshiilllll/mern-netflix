@@ -3,7 +3,7 @@ import {
   MailOutline,
   PermIdentity,
   Publish,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import { useContext, useState } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { UserContext } from "../../context/userContext/UserContext";

@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import "./product.css";
-import { Publish } from "@material-ui/icons";
+import { Publish } from "@mui/icons-material";
 
 export default function Product() {
   const location = useLocation();
