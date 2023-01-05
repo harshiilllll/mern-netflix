@@ -5,8 +5,29 @@
   --accent-color: #727cf5;
   --font-color: #FFFFFF;
 
-  --border-radius: 1px; 
+  --border-radius: 6px; 
 }
+
+::-webkit-scrollbar {
+  background-color: var(--back-color);
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--main-color);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #757678;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #75767895;
+}
+
 body {
   overflow: hidden;
 }

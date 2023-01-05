@@ -1,5 +1,5 @@
 import "./userList.css";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid , GridToolbar } from "@mui/x-data-grid";
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { deleteUser, getUsers } from "../../context/userContext/apiCalls";
@@ -25,17 +25,17 @@ export default function UserList() {
     {
       field: "_id",
       sort: "desc",
-      cellClassName: "cell",
       headerClassName: "header-cell",
+      cellClassName: "cell",
       headerName: "ID",
-      width: 200
+      flex: 4,
     },
     {
       field: "username",
       headerName: "Username",
       cellClassName: "cell",
       headerClassName: "header-cell",
-      width: 200,
+      flex: 4,
       renderCell: (params) => {
         return (
           <div className="userListUser">
@@ -57,13 +57,14 @@ export default function UserList() {
       cellClassName: "cell",
       headerClassName: "header-cell",
       headerName: "Email",
-      width: 200,
+      flex: 4,
     },
     {
       field: "action",
       headerName: "Action",
       headerClassName: "header-cell",
-      width: 100,
+      cellClassName: "cell",
+      width: 120,
       renderCell: (params) => {
         return (
           <>
@@ -88,9 +89,9 @@ export default function UserList() {
         <Loader /> // added this line
       ) : (
         <Box
-          m="40px 0 0 0"
-          height="75vh"
-          width="83vw"
+          m="25px 0 0 0"
+          height="84vh"
+          width="84.5vw"
           sx={{
             "& .MuiDataGrid-root": {
               border: "none",
@@ -99,18 +100,18 @@ export default function UserList() {
               borderBottom: "none",
             },
             "& .name-column--cell": {
-              color: "#94e2cd",
+              color: "yellowgreen",
             },
             "& .MuiDataGrid-columnHeaders": {
-              backgroundColor: "#3e4396",
+              backgroundColor: "#727cf5",
               borderBottom: "none",
             },
             "& .MuiDataGrid-virtualScroller": {
-              backgroundColor: "#1F2A40",
+              backgroundColor: "#0c1427",
             },
             "& .MuiDataGrid-footerContainer": {
               borderTop: "none",
-              backgroundColor: "#3e4396",
+              backgroundColor: "#727cf5",
               color: "#FFFFFF"
             },
             "& .MuiCheckbox-root": {
@@ -123,6 +124,7 @@ export default function UserList() {
             rows={users}
             columns={columns}
             getRowId={(r) => r._id}
+            components={{ Toolbar: GridToolbar }} 
           />
         </Box>
       )}

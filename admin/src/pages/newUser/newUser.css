@@ -1,13 +1,18 @@
 .newUser {
   flex: 4;
+  color: var(--font-color);
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
 }
 
-.newUserForm {
+.addUserForm {
   display: flex;
   flex-wrap: wrap;
+
 }
 
-.newUserItem {
+.addUserItem {
   width: 400px;
   display: flex;
   flex-direction: column;
@@ -15,36 +20,36 @@
   margin-right: 20px;
 }
 
-.newUserItem > label {
+.addUserItem > label {
   margin-bottom: 10px;
   font-size: 14px;
   font-weight: 600;
   color: rgb(151, 150, 150);
 }
 
-.newUserItem > input {
+.addUserItem > input {
   height: 20px;
   padding: 10px;
   border: 1px solid gray;
   border-radius: 5px;
 }
 
-.newUserGender > input {
+.addUserGender > input {
   margin-top: 15px;
 }
 
-.newUserGender>label{
+.addUserGender>label{
     margin: 10px;
     font-size: 18px;
     color: #555;
 }
 
-.newUserSelect{
+.addUserSelect{
     height: 40px;
     border-radius: 5px;
 }
 
-.newUserButton{
+.addUserButton{
     width: 200px;
     border: none;
     background-color: darkblue;

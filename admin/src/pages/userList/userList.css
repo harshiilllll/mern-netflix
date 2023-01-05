@@ -41,6 +41,8 @@
   font-weight: 700;
 }
 
-.cell {
+
+.MuiDataGrid-root .MuiDataGrid-cell {
+  border: none !important;
   color: white;
 }

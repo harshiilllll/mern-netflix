@@ -38,12 +38,13 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  border-radius: 18px;
+  border-radius: var(--border-radius);
+  color: var(--accent-color);
 }
 
 .sidebarListItem.active,
 .sidebarListItem:hover {
-  background-color: rgb(240, 240, 255);
+  background-color: var(--back-color);
 }
 
 .sidebarIcon{

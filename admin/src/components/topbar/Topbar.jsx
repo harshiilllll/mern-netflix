@@ -1,6 +1,6 @@
 import React from "react";
 import "./topbar.css";
-import { NotificationsNone, Language, ExitToApp } from "@mui/icons-material";
+import { ExitToApp } from "@mui/icons-material";
 import { logout } from "../../context/authContext/AuthActions";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { useContext } from "react";
