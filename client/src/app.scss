@@ -5,6 +5,26 @@
   --hover-color: rgb(26, 26, 26);
 }
 
+::-webkit-scrollbar {
+  background-color: #1a1a1e;
+  width: 13px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #1a1a1e;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #757678;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #75767895;
+}
+
 * {
   margin: 0;
   padding: 0;

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -53,11 +52,11 @@ const Navbar = () => {
             <ArrowDropDownIcon className="icon" />
             <div className="options">
               <span>Settings</span>
-              <span onClick={() => {
+              <Link to="/login" onClick={() => {
                 if (window.confirm("Are u sure u want to logout?")) {
                   dispatch(logout());
                 }
-              }}>Logout</span>
+              }}>Logout</Link>
             </div>
           </div>
         </div>
