@@ -1,12 +1,29 @@
 :root {
-  --back-color: #070d19;
-  --main-color: #0c1427;
-  --border-color: #0f1a34;
-  --accent-color: #727cf5;
+  --back-color: #050505;
+  --main-color: #0c0c0c;
+  --sidebar-color: #000002;
+  --border-color: #212121;
+  --accent-color: #09121b;
   --font-color: #FFFFFF;
 
+  --line-color: #929292;
+  --tick-color: rgb(158, 240, 117);
+
   --border-radius: 6px; 
+
+  /* --back-color: #ededed;
+  --main-color: #e0e0e0;
+  --sidebar-color: #ffffff;
+  --border-color: #d2d2d2;
+  --accent-color: #191d2c;
+  --font-color: #000000;
+
+  --line-color: #000000;
+  --tick-color: rgb(149, 211, 255);
+
+  --border-radius: 4px;  */
 }
+
 
 ::-webkit-scrollbar {
   background-color: var(--back-color);

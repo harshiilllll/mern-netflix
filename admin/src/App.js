@@ -49,10 +49,10 @@ function App() {
               <Route path="/movies">
                 <ProductList />
               </Route>
-              <Route path="/product/:productId">
+              <Route path="/movie/:productId">
                 <Product />
               </Route>
-              <Route path="/newproduct">
+              <Route path="/newmovie">
                 <NewProduct />
               </Route>
               <Route path="/lists">

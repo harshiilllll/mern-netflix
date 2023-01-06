@@ -6,11 +6,11 @@
   background-color: var(--main-color);
   border-radius: var(--border-radius);
   border: 2px solid var(--border-color);
-  color: black;
+  color: black !important;
   font-weight: 500;
 }
 
 .chartTitle {
   margin-bottom: 20px;
-  color: white;
+  color: var(--font-color);
 }

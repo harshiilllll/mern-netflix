@@ -14,7 +14,7 @@ import "./user.css";
 export default function User() {
   const [updatedUser, setUpdatedUser] = useState(null);
 
-  const {dispatch} = useContext(UserContext)
+  const { dispatch } = useContext(UserContext);
 
   const history = useHistory();
 
@@ -28,18 +28,21 @@ export default function User() {
   // }
 
   const handleChange = (e) => {
-    const value = e.target.value;
-    setUpdatedUser({ ...updatedUser, [e.target.name]: value });
+    const { name, value } = e.target;
+    setUpdatedUser({
+      ...updatedUser,
+      [name]: name === "isAdmin" && value === "true" ? true : value,
+    });
   };
   console.log(updatedUser);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (window.confirm("Are you sure you want to update?")){
-      updateUser(user._id, dispatch, updatedUser)
-      history.push("/users")
+    if (window.confirm("Are you sure you want to update?")) {
+      updateUser(user._id, dispatch, updatedUser);
+      history.push("/users");
     }
-  }
+  };
 
   const location = useLocation();
   const user = location.user;
@@ -68,12 +71,9 @@ export default function User() {
   dateArray[1] = monthName;
   let joinDate = dateArray.join(" ");
 
-  console.log(user.isAdmin);
 
   let strIsAdmin = user.isAdmin.toString();
-  strIsAdmin = (strIsAdmin === "true") ? "Admin" : "User";
-
-
+  strIsAdmin = strIsAdmin === "true" ? "Admin" : "User";
 
   return (
     <div className="user">
@@ -87,7 +87,10 @@ export default function User() {
         <div className="userShow">
           <div className="userShowTop">
             <img
-              src={user.profilePic || "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"}
+              src={
+                user.profilePic ||
+                "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+              }
               alt=""
               className="userShowImg"
             />
@@ -146,13 +149,35 @@ export default function User() {
                   onChange={handleChange}
                 />
               </div>
-              <button className="userUpdateButton" onClick={handleSubmit}>Update</button>
+              <div className="userUpdateItem">
+                <label>Profile pic</label>
+                <input
+                  type="text"
+                  placeholder="Profile Pic URL"
+                  className="userUpdateInput"
+                  name="profilePic"
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="userUpdateItem">
+                <label>Is Admin?</label>
+                <select id="isSeries" onChange={handleChange} name="isAdmin">
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+              <button className="userUpdateButton" onClick={handleSubmit}>
+                Update
+              </button>
             </div>
             <div className="userUpdateRight">
               <div className="userUpdateUpload">
                 <img
                   className="userUpdateImg"
-                  src={user.profilePic || "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"}
+                  src={
+                    user.profilePic ||
+                    "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+                  }
                   alt=""
                 />
                 <label htmlFor="file">

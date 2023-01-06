@@ -23,34 +23,98 @@ export default function ProductList() {
     deleteMovie(id, dispatch);
   };
 
+
   const columns = [
-    { field: "_id", headerName: "ID", width: 220, headerClassName: "header-cell", },
     {
-      field: "movies",
-      headerName: "Movie",
-      width: 240, headerClassName: "header-cell",
+      field: "_id",
+      headerName: "ID",
+      width: 220,
+      headerClassName: "header-cell",
+    },
+    {
+      field: "imgSm",
+      headerName: "Img",
+      width: 50,
+      headerClassName: "header-cell",
       renderCell: (params) => {
         return (
           <div className="productListItem">
             <img className="productListImg" src={params.row.img} alt="" />
+          </div>
+        );
+      },
+    },
+    {
+      field: "title",
+      headerName: "Title",
+      width: 240,
+      headerClassName: "header-cell",
+      renderCell: (params) => {
+        return (
+          <div className="productListItem">
             {params.row.title}
           </div>
         );
       },
     },
-    { field: "genre", headerName: "Genre", flex: 1, headerClassName: "header-cell", },
-    { field: "year", headerName: "Year", flex: 1, headerClassName: "header-cell", },
-    { field: "limit", headerName: "Age Limit", flex: 1, headerClassName: "header-cell", },
-    { field: "isSeries", headerName: "isSeries", flex: 1, headerClassName: "header-cell", },
+    {
+      field: "genre",
+      headerName: "Genre",
+      flex: 1,
+      headerClassName: "header-cell",
+    },
+    {
+      field: "year",
+      headerName: "Year",
+      flex: 1,
+      headerClassName: "header-cell",
+    },
+    {
+      field: "limit",
+      headerName: "Age Limit",
+      flex: 0.6,
+      headerClassName: "header-cell",
+    },
+    {
+      field: "duration",
+      headerName: "Duration",
+      flex: 1,
+      headerClassName: "header-cell",
+    },
+    {
+      field: "isSeries",
+      headerName: "isSeries",
+      flex: 1,
+      headerClassName: "header-cell",
+    },
+    {
+      field: "createdAt",
+      headerName: "Uploaded At",
+      flex: 1,
+      headerClassName: "header-cell",
+      renderCell: (params) => {
+        const dateOptions = {
+          day: "numeric",
+          month: "short",
+          year: "numeric",
+        };
+        const formattedDate = new Date(params.row.createdAt).toLocaleDateString(
+          "en-US",
+          dateOptions
+        );
+        return formattedDate;
+      },
+    },
     {
       field: "action",
       headerName: "Action",
-      width: 120, headerClassName: "header-cell",
+      width: 120,
+      headerClassName: "header-cell",
       renderCell: (params) => {
         return (
           <>
             <Link
-              to={{ pathname: "/product/" + params.row._id, movie: params.row }}
+              to={{ pathname: "/movie/" + params.row._id, movie: params.row }}
             >
               <button className="productListEdit">Edit</button>
             </Link>
@@ -64,17 +128,15 @@ export default function ProductList() {
     },
   ];
 
-
-
   return (
-     <>
+    <>
       {isLoading ? (
         <Loader /> // added this line
       ) : (
         <Box
-          m="25px 0 0 0"
-          height="84vh"
-          width="84.5vw"
+          m="0 0 0 0"
+          height="93vh"
+          width="94%"
           sx={{
             "& .MuiDataGrid-root": {
               border: "none",
@@ -82,23 +144,20 @@ export default function ProductList() {
             "& .MuiDataGrid-cell": {
               borderBottom: "none",
             },
-            "& .name-column--cell": {
-              color: "yellowgreen",
-            },
             "& .MuiDataGrid-columnHeaders": {
-              backgroundColor: "#727cf5",
+              backgroundColor: "var(--accent-color)",
               borderBottom: "none",
             },
             "& .MuiDataGrid-virtualScroller": {
-              backgroundColor: "#0c1427",
+              backgroundColor: "var(--main-color)",
             },
             "& .MuiDataGrid-footerContainer": {
               borderTop: "none",
-              backgroundColor: "#727cf5",
-              color: "#FFFFFF"
+              backgroundColor: "var(--accent-color)",
+              color: "var(--font-color)",
             },
             "& .MuiCheckbox-root": {
-              color: "#b7ebde !important",
+              color: "var(--tick-color) !important",
             },
           }}
         >
@@ -107,7 +166,7 @@ export default function ProductList() {
             rows={movies}
             columns={columns}
             getRowId={(r) => r._id}
-            components={{ Toolbar: GridToolbar }} 
+            components={{ Toolbar: GridToolbar }}
           />
         </Box>
       )}

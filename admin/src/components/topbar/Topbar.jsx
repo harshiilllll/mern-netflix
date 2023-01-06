@@ -10,6 +10,7 @@ export default function Topbar() {
   const { dispatch } = useContext(AuthContext);
   const history = useHistory();
 
+
   return (
     <div className="topbar">
       <div className="topbarWrapper">
@@ -27,6 +28,7 @@ export default function Topbar() {
           </div> */}
           <div className="topbarIconContainer">
             <Link
+              to="/login"
               className="logout-btn"
               onClick={() => {
                 if (window.confirm("Are u sure u want to logout?")) {
