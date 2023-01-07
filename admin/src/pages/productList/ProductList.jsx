@@ -1,6 +1,6 @@
 import "./productList.css";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { DeleteOutline } from "@mui/icons-material";
+import { CloseRounded, Delete, DeleteOutline, DoneRounded } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { MovieContext } from "../../context/movieContext/MovieContext";
 import { useEffect, useState } from "react";
@@ -78,14 +78,17 @@ export default function ProductList() {
     {
       field: "duration",
       headerName: "Duration",
-      flex: 1,
+      flex: 0.6,
       headerClassName: "header-cell",
     },
     {
       field: "isSeries",
-      headerName: "isSeries",
-      flex: 1,
+      headerName: "Series",
+      flex: 0.5,
       headerClassName: "header-cell",
+      renderCell: (params) => {
+        return Boolean(params.row.isSeries) ? <DoneRounded className="yes" /> : <CloseRounded className="no" />;
+      },
     },
     {
       field: "createdAt",
@@ -118,8 +121,8 @@ export default function ProductList() {
             >
               <button className="productListEdit">Edit</button>
             </Link>
-            <DeleteOutline
-              className="productListDelete"
+            <Delete
+              className="del productListDelete"
               onClick={() => handleDelete(params.row._id)}
             />
           </>

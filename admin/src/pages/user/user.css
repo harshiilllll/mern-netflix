@@ -1,6 +1,7 @@
 .user {
   flex: 4;
   padding: 20px;
+  color: var(--font-color);
 }
 
 .userTitleContainer {
@@ -12,12 +13,16 @@
 .userAddButton {
   width: 80px;
   border: none;
-  padding: 5px;
-  background-color: teal;
+  padding: 10px;
+  background-color: var(--border-color);
   border-radius: 5px;
   cursor: pointer;
   color: white;
   font-size: 16px;
+}
+
+.userAddButton:hover {
+  background-color: var(--button-color);
 }
 
 .userContainer {
@@ -30,6 +35,8 @@
   padding: 20px;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  background-color: var(--main-color);
+  border-radius: var(--border-radius);
 }
 
 .userUpdate {
@@ -80,7 +87,7 @@
     display: flex;
     align-items: center;
     margin: 20px 0px;
-    color: #444;
+    color: var(--font-color);
 }
 
 .userShowIcon{
@@ -108,17 +115,32 @@
     margin-top: 10px;
 }
 
+.userUpdateItem >select{
+  margin-bottom: 10px;
+  background-color: var(--back-color);
+  color: var(--font-color);
+  height: 30px;
+}
+
 .userUpdateItem>label{
     margin-bottom: 5px;
     font-size: 14px;
 }
 
 .userUpdateInput{
-    border: none;
-    width: 250px;
-    height: 30px;
-    border-bottom: 1px solid gray;
+  margin-bottom: 10px;
+  border: none;
+  padding: 5px;
+  border-bottom: 1px solid gray;
+  background-color: transparent;
+  outline: none;
+  color: var(--font-color);
 }
+
+.userUpdateLeft {
+  width: 50%;
+}
+
 
 .userUpdateRight{
     display: flex;
@@ -148,8 +170,12 @@
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    background-color: darkblue;
+    background-color: var(--button-color);
     color: white;
     font-weight: 600;
     margin-top: 30px;
+}
+
+.userUpdateButton:hover{
+  background-color: var(--border-color);
 }

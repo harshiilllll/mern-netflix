@@ -1,5 +1,6 @@
 .productList {
   flex: 4;
+  overflow: auto;
 }
 
 .productListItem {
@@ -18,17 +19,25 @@
 
 .productListEdit {
   border: none;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   padding: 5px 10px;
-  background-color: #3bb077;
-  color: white;
+  background-color: var(--button-color);
+  color: var(--font-color);
   cursor: pointer;
   margin-right: 20px;
 }
 
-.productListDelete {
-  color: red;
+.productListEdit:hover{
+  background-color: var(--border-color);
+}
+
+.del {
+  color: #c00;
   cursor: pointer;
+}
+
+.del:hover {
+  color: red;
 }
 
 .header-cell {
@@ -55,4 +64,16 @@
 .MuiDataGrid-root .MuiDataGrid-cell {
   border: none !important;
   color: var(--font-color);
+}
+
+.MuiDataGrid-columnSeparator {
+  visibility: hidden;
+}
+
+.yes {
+  color: green;
+}
+
+.no {
+  color: red;
 }

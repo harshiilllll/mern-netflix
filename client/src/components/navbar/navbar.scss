@@ -7,7 +7,7 @@
   font-size: 14px;
   z-index: 999;
   background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.3) 50%);
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 
   &.scrolled {
     background: var(--main-color);
@@ -32,7 +32,6 @@
         letter-spacing: 2px;
         font-weight: 900;
       }
-
     }
 
     .center {
@@ -43,11 +42,15 @@
       font-size: 18px;
       text-transform: uppercase;
       font-weight: 500;
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: "Montserrat", sans-serif;
 
       .link {
         color: white;
         text-decoration: none;
+      }
+
+      .active {
+        color: var(--accent-color);
       }
 
       span {
@@ -57,6 +60,7 @@
           color: var(--accent-color);
         }
       }
+
     }
 
     .right {
@@ -64,11 +68,36 @@
       align-items: center;
       gap: 15px;
 
-      .icon {
-        cursor: pointer;
+      .search {
+        display: flex;
+        align-items: center;
+        position: absolute;
 
-        &:hover {
-          color: var(--accent-color);
+        input {
+          background: rgba(255, 255, 255, 0.2);
+          border: none;
+          display: block;
+          outline: none;
+          padding: 10px 40px 10px 10px;
+          height: 100%;
+          color: #fff;
+          position: absolute;
+          right: 3px;
+          top: -17px;
+          height: 36px;
+          border-radius: 8px;
+          -webkit-box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        .icon {
+          cursor: pointer;
+          position: absolute;
+          right: 5px;
+
+          &:hover {
+            color: var(--accent-color);
+          }
         }
       }
 
@@ -77,6 +106,7 @@
         gap: 4px;
         position: relative;
         align-items: center;
+        margin-left: 15px;
 
         img {
           border-radius: 100%;

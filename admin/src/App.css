@@ -1,13 +1,14 @@
 :root {
-  --back-color: #050505;
-  --main-color: #0c0c0c;
-  --sidebar-color: #000002;
-  --border-color: #212121;
-  --accent-color: #09121b;
+  --back-color: #25272a;
+  --main-color: #1a1c1e;
+  --sidebar-color: #141414;
+  --border-color: #373a3f;
+  --accent-color: #141414;
   --font-color: #FFFFFF;
 
   --line-color: #929292;
-  --tick-color: rgb(158, 240, 117);
+  --tick-color: #2d7d46;
+  --button-color: #5865f2;
 
   --border-radius: 6px; 
 
@@ -15,7 +16,7 @@
   --main-color: #e0e0e0;
   --sidebar-color: #ffffff;
   --border-color: #d2d2d2;
-  --accent-color: #191d2c;
+  --accent-color: #cbcbcb;
   --font-color: #000000;
 
   --line-color: #000000;

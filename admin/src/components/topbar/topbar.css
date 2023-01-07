@@ -46,3 +46,10 @@
   color: rgb(132, 132, 132);
 }
 
+.theme-icon {
+  margin-right: 10px;
+}
+
+.theme-icon:hover {
+  color: rgb(132, 132, 132);
+}

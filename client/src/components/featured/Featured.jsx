@@ -63,16 +63,26 @@ function Featured({ type, setGenre }) {
         <h2 className="info-title">{movie.title}</h2>
         <span className="desc">{movie.desc}</span>
         <div className="buttons">
-          <Link to="/watch" style={{textDecoration: 'none'}} state={{ movie: movie }}>
+          <Link
+            to="/watch"
+            style={{ textDecoration: "none" }}
+            state={{ movie: movie }}
+          >
             <button className="play">
               <PlayCircleRoundedIcon className="icon" />
               <span>Play</span>
             </button>
           </Link>
-          <button className="more">
-            <InfoOutlinedIcon className="icon" />
-            <span>Info</span>
-          </button>
+          <Link
+            to="/watchdetail"
+            style={{ textDecoration: "none" }}
+            state={{ movie: movie }}
+          >
+            <button className="more">
+              <InfoOutlinedIcon className="icon" />
+              <span>Info</span>
+            </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -48,18 +48,31 @@
       justify-content: space-between;
       margin-bottom: 10px;
 
+      .addToWatchlist {
+        background: none;
+        cursor: pointer;
+        color: white;
+        padding: 0;
+        border: 0;
+        transition: .5s;
+
+        &:hover {
+          color: gray;
+        }
+      }
+
       .arrowIcons {
         display: flex;
         flex-direction: column;
         height: 100%;
       }
 
-      div{
+      div {
         display: flex;
         gap: 5px;
       }
 
-      div > *{
+      div > * {
         border: 2px solid white;
         padding: 2px;
         border-radius: 50%;
@@ -73,26 +86,67 @@
       gap: 10px;
       color: rgb(219, 219, 219);
       font-weight: 600;
+      font-size: 12px;
 
       .movie-title {
-        font-size: 24px;
+        font-size: 18px;
       }
 
       .age-limit {
-        border: 1px solid gray;
-        padding: 1px 3px;
+        font-size: 11px;
+        border: 1px solid white;
+        padding: 3px 4px;
+        color: lightgray;
+      }
+
+      .isSeries {
+        font-size: 10px;
+        background-color: #ff5722;
+        color: white;
+        padding: 4px;
+        width: fit-content;
       }
     }
 
     .desc {
+      font-size: 14px;
+      margin-top: 10px;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
       color: lightgray;
     }
 
-    .genre {
-      text-align: right;
-      text-transform: uppercase;
-      color: rgb(219, 219, 219);
-      font-weight: 600;
+    .year {
+      font-size: 11px;
+      background-color: #03a8f5;
+      color: white;
+      padding: 4px;
+      width: fit-content;
+    }
+    .itemInfoBottom {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 10px;
+
+      .dot {
+        height: 4px;
+        width: 4px;
+        background-color: rgba(255, 255, 255, 0.486);
+        border-radius: 50%;
+      }
+
+      .genre,
+      .duration {
+        text-transform: capitalize;
+        color: rgb(219, 219, 219);
+        font-weight: 600;
+        font-size: 14px;
+      }
     }
   }
 }

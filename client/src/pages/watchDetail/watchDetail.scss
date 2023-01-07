@@ -1,0 +1,81 @@
+.navbar {
+  // background: var(--main-color);
+}
+
+.watchDetail {
+  min-height: 100vh;
+  background-color: var(--main-color);
+  .container {
+    height: 80vh;
+    width: 100vw;
+    position: relative;
+    padding-top: 66px;
+
+    background-size: cover;
+    background-position: center;
+
+    img {
+      height: 300px;
+      width: 200px;
+      object-fit: cover;
+    }
+
+    .background {
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .content {
+      backdrop-filter: blur(40px) brightness(30%);
+      height: 100%;
+      width: 100%;
+      display: flex;
+      padding: 70px;
+      gap: 70px;
+      color: white;
+      font-family: "Ubuntu";
+
+      .info {
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+
+        h1 {
+          font-size: 46px;
+        }
+
+        p {
+          font-size: 14px;
+        }
+
+        span {
+          padding: 2px 10px;
+          border: 1px solid white;
+          border-radius: 20px;
+          width: fit-content;
+          text-align: center;
+          text-transform: capitalize;
+          font-size: 14px;
+          cursor: pointer;
+        }
+
+        .watch-btn {
+          border: none;
+          outline: none;
+          padding: 10px 20px;
+          border-radius: 30px;
+          font-size: 15px;
+          width: fit-content;
+          background-color: var(--accent-color);
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          cursor: pointer;
+          text-decoration: none;
+          color: black;
+        }
+      }
+    }
+  }
+}

@@ -19,12 +19,16 @@
 
 .userListEdit {
   border: none;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   padding: 5px 10px;
-  background-color: #3bb077;
-  color: white;
+  background-color: var(--button-color);
+  color: var(--font-color);
   cursor: pointer;
   margin-right: 20px;
+}
+
+.userListEdit:hover{
+  background-color: var(--border-color);
 }
 
 .userListDelete {

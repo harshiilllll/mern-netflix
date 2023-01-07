@@ -1,6 +1,6 @@
 import "./userList.css";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { DeleteOutline, DoneRounded, CloseRounded } from "@mui/icons-material";
+import { DeleteOutline, DoneRounded, CloseRounded, Delete, VerifiedUser, AccountCircle } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { deleteUser, getUsers } from "../../context/userContext/apiCalls";
 import { useContext, useEffect, useState } from "react";
@@ -66,7 +66,7 @@ export default function UserList() {
       headerName: "Admin",
       flex: 1,
       renderCell: (params) => {
-        return Boolean(params.row.isAdmin) ? <DoneRounded /> : <CloseRounded />;
+        return Boolean(params.row.isAdmin) ? <VerifiedUser className="yes" /> : <AccountCircle />;
       },
     },
     {
@@ -81,10 +81,10 @@ export default function UserList() {
             <Link
               to={{ pathname: "/user/" + params.row._id, user: params.row }}
             >
-              <button className="userListEdit">Edit</button>
+              <button className="userListEdit">View</button>
             </Link>
-            <DeleteOutline
-              className="userListDelete"
+            <Delete
+              className="del userListDelete"
               onClick={() => handleDelete(params.row._id)}
             />
           </>

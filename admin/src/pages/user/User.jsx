@@ -34,7 +34,6 @@ export default function User() {
       [name]: name === "isAdmin" && value === "true" ? true : value,
     });
   };
-  console.log(updatedUser);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -73,12 +72,12 @@ export default function User() {
 
 
   let strIsAdmin = user.isAdmin.toString();
-  strIsAdmin = strIsAdmin === "true" ? "Admin" : "User";
+  strIsAdmin = strIsAdmin === "true" ? "Admin account" : "User account";
 
   return (
     <div className="user">
       <div className="userTitleContainer">
-        <h1 className="userTitle">Edit User</h1>
+        <h1 className="userTitle">User Profile</h1>
         <Link to="/newUser">
           <button className="userAddButton">Create</button>
         </Link>

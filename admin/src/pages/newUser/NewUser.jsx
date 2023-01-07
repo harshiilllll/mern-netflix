@@ -18,7 +18,6 @@ export default function NewProduct() {
     });
   }
 
-  console.log(user);
 
   const handleSubmit = (e) => {
     e.preventDefault();

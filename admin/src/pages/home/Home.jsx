@@ -53,8 +53,6 @@ export default function Home() {
     getStats();
   }, [MONTHS]);
 
-  console.log("User stats");
-  console.log(userStats);
 
   return (
     <div className="home">

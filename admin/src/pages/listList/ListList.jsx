@@ -1,6 +1,6 @@
 import "./listList.css";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { DeleteOutline } from "@mui/icons-material";
+import { Delete, DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { ListContext } from "../../context/listContext/ListContext";
@@ -60,8 +60,8 @@ export default function ListList() {
             >
               <button className="productListEdit">Edit</button>
             </Link>
-            <DeleteOutline
-              className="productListDelete"
+            <Delete
+              className="del productListDelete"
               onClick={() => handleDelete(params.row._id)}
             />
           </>

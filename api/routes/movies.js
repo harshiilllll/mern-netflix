@@ -88,7 +88,9 @@ router.get("/", verify, async (req, res) => {
   const query = req.query.new;
   if (req.user.isAdmin) {
     try {
-      const movies = query ? await Movie.find().sort({ _id: -1 }).limit(5) : await Movie.find();
+      const movies = query
+        ? await Movie.find().sort({ _id: -1 }).limit(5)
+        : await Movie.find();
       res.status(200).json(movies);
     } catch (err) {
       res.status(500).json(err);
@@ -98,5 +100,18 @@ router.get("/", verify, async (req, res) => {
   }
 });
 
+//Search
+router.get("/search", verify, async (req, res) => {
+  const query = req.query.q;
+  try {
+    const movies = await Movie.find({
+      $or: [
+        { title: { $regex: query, $options: "i" } },
+        { genre: { $regex: query, $options: "i" } },
+      ],
+    }).sort({ _id: -1 }).limit(50);
+    res.status(200).json(movies);
+  } catch (err) {}
+});
 
 module.exports = router;

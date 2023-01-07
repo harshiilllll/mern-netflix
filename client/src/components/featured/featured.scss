@@ -3,6 +3,18 @@
   position: relative;
   margin-bottom: 50px;
 
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg,#202125 0,rgba(32,33,37,0) 50%,#202125 100%);
+    transition: 0.5s;
+    z-index: 1;
+  }
+
   .category {
     position: absolute;
     top: 80px;
@@ -27,10 +39,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(30%);
-
   }
-  
 
   .info {
     width: 40%;
@@ -38,6 +47,7 @@
     left: 50px;
     bottom: 80px;
     color: white;
+    z-index: 2;
 
     // border: 1px solid rgba(255, 255, 255, 0.18);
     display: flex;
@@ -75,7 +85,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 20px 10px 10px;
+      padding: 7px 20px 7px 7px;
       border-radius: 34px;
       border: none;
       gap: 5px;
@@ -86,24 +96,25 @@
         transform: translateY(-5px);
         transition: all 325ms ease-out;
       }
-
+      
       &.play {
-        color: white;
-        background-color: var(--main-color);
-
+        background-color: var(--accent-color);
+        color: black;
+        box-sizing: border-box;
+        
         &:hover {
-          background-color: var(--accent-color);
-          color: black;
+          color: white;
+          background-color: var(--main-color);
         }
       }
 
       &.more {
         color: var(--accent-color);
-        background-color: transparent;
+        background-color: var(--hover-color);
       }
 
       .icon {
-        font-size: 32px;
+        font-size: 30px;
       }
     }
   }
