@@ -11,3 +11,14 @@ export const login = async (user, dispatch) => {
   }
 };
 
+
+//Google Login
+export const googleLogin = async (user, dispatch) => {
+  dispatch(loginStart());
+  try {
+    const res = await axios.post("auth/google", user);
+    dispatch(loginSuccess(res.data));
+  } catch (err) {
+    dispatch(loginFailure());
+  }
+};

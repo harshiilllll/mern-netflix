@@ -75,7 +75,7 @@ export default function Sidebar() {
               </Link>
               <li className={`sidebarListItem ${active === 'reports' ? 'active' : ''}`} onClick={() => setActiveItem('reports')}>
                 <BarChart className="sidebarIcon" />
-                Reports
+                  Reports
               </li>
             </ul>
           </div>

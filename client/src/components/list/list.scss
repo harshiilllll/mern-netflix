@@ -1,7 +1,6 @@
 // .list {
 //     width: 100%;
 //     margin-bottom: 20px;
-    
 
 //     .listTitle {
 //         color: white;
@@ -61,62 +60,177 @@
 //     }
 // }
 
+@import "../../app.scss";
+
+// .list {
+//   width: 100%;
+//   margin-bottom: 25px;
+//   display: flex;
+//   flex-direction: column;
+//   gap: 20px;
+
+//   .listTitle {
+//     color: white;
+//     font-size: 32px;
+//     font-weight: 500;
+//     margin-left: 50px;
+
+//     @include mobile {
+//         margin-left: 20px;
+//         font-size: 24px;
+//     }
+//   }
+
+//   .wrapper {
+//     display: flex;
+//     width: 100%;
+//     align-items: center;
+//     position: relative;
+//     overflow: auto;
+//     &::-webkit-scrollbar {
+//       display: none;
+//     }
+
+//     .container {
+//       display: flex;
+//       margin-inline: 50px;
+//       width: max-content;
+//       gap: 5px;
+//       transition: all 225ms ease;
+//       background-color: transparent;
+
+//       @include mobile {
+//         margin-inline: 20px;
+//       }
+//     }
+
+//     .arrows {
+//       display: flex;
+//       flex-direction: column;
+//       align-items: center;
+//       justify-content: space-between;
+//       background-color: var(--main-color);
+//       position: absolute;
+//       right: 0;
+//       height: 100%;
+//       width: 90px;
+
+//       @include tablet {
+//         display: none;
+//       }
+
+//       .sliderArrow {
+//         background-color: #111;
+//         color: white;
+//         width: 50%;
+//         height: 155px;
+//         border-radius: 10px;
+//         cursor: pointer;
+//         transition: all 165ms ease;
+
+//         &:hover {
+//           background-color: var(--accent-color);
+//           color: black;
+//         }
+//       }
+//     }
+//   }
+// }
+
 .list {
-    width: 100%;
-    margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+  position: relative;
+  padding-inline: 50px;
+  overflow: hidden;
+
+  @include mobile {
+    padding-inline: 10px;
+  }
+
+  .left {
+    position: absolute;
+    right: 95px;
+    top: 0px;
+    color: lightgray;
+    border-radius: 50%;
+    font-size: 34px;
+    border: .02px solid rgba($color: #fff, $alpha: 0.5);
+    cursor: pointer;
+    display: none;
+    @include tablet {
+      display: block;
+    }
+    &:hover {
+      background-color: var(--accent-color);
+      color: black;
+    }
+    @include tablet {
+      font-size: 26px;
+      right:55px;
+    }
+  }
+  .right {
+    position: absolute;
+    right: 50px;
+    top: 0px;
+    color: lightgray;
+    border-radius: 50%;
+    font-size: 34px;
+    border: .02px solid rgba($color: #fff, $alpha: 0.5);
+    cursor: pointer;
+    display: none;
+
+    @include mobile {
+      display: block;
+    }
+    &:hover {
+      background-color: var(--accent-color);
+      color: black;
+    }
+    @include mobile {
+      font-size: 26px;
+      right: 20px;
+    }
+  }
+
+  .disabled {
+    pointer-events: none;
+    background-color: lightgray;
+    color: gray;
+  }
+
+
+  &:hover .right,
+  &:hover .left {
+    display: block;
+    z-index: 20;
+  }
+
+  .listTitle {
+    color: var(--font-color);
+    font-size: 28px;
+    font-weight: 600;
+
+    @include mobile {
+      font-size: 18px;
+    }
+  }
+
+  .slider {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    overflow: auto;
+    gap: 5px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
 
-    .listTitle {
-        color: white;
-        font-size: 32px;
-        font-weight: 500;
-        margin-left: 50px;
+    &::-webkit-scrollbar {
+      display: none;
     }
-
-    .wrapper{
-        display: flex;
-        width: 100%;
-        align-items: center;
-        position: relative;
-
-        .container {
-            display: flex;
-            margin-left: 50px;
-            width: max-content;
-            gap: 5px;
-            transition: all 225ms ease;
-            background-color: transparent;
-        }
-
-        .arrows {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            background-color: var(--main-color);
-            position: absolute;
-            right: 0;
-            height: 100%;
-            width: 90px;
-            
-            .sliderArrow{
-                background-color: #111;
-                color: white;
-                width: 50%;
-                height: 155px;
-                border-radius: 10px;
-                cursor: pointer;
-                transition: all 165ms ease;
-
-                &:hover {
-                    background-color: var(--accent-color);
-                    color: black;
-                }
-            }
-
-        }
-
-    }
+  }
 }

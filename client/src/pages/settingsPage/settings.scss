@@ -1,0 +1,219 @@
+@import "../../app.scss";
+
+.settings {
+  background-color: var(--hover-color);
+  color: var(--font-color);
+  min-height: 100vh;
+
+  .header {
+    font-size: 24px;
+    padding: 20px 50px;
+    border-bottom: 1px solid rgba(255 255 255 / 25%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include mobile {
+      padding: 10px;
+    }
+
+    h4 {
+      font-size: 18px;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+
+      .icon {
+        transition: 0.5s;
+      }
+      &:hover .icon {
+        transform: rotate(90deg);
+      }
+    }
+
+    .logout-btn {
+      border: none;
+      outline: none;
+      background-color: var(--red);
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 10px 15px;
+      color: white;
+      box-shadow: 0 0 30px 2px rgba(0 0 0 / 55%);
+
+      &:hover {
+        background-color: red;
+        transition: all 225ms linear;
+        cursor: pointer;
+      }
+
+      &:active {
+        box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.2),
+          inset 0px 4px 15px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+
+  .container {
+    padding: 50px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+
+    @include mobile {
+      padding: 10px;
+      padding-top: 30px;
+      gap: 10px;
+      flex-direction: column;
+    }
+
+    .right {
+      flex: 1;
+      display: flex;
+      @include mobile {
+        margin-bottom: 20px;
+      }
+      img {
+        height: 120px;
+      }
+    }
+
+    .left {
+      flex: 5;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .username {
+        border-bottom: 1px solid rgba(255 255 255 / 5%);
+        padding-bottom: 5px;
+      }
+
+      .email {
+        font-size: 14px;
+        word-wrap: break-word;
+      }
+
+      .admin {
+        background-color: rgb(39, 181, 79);
+        width: max-content;
+        padding: 3px 6px;
+        font-size: 12px;
+        border-radius: 4px;
+      }
+
+      .google {
+      }
+
+      .date {
+        font-size: 12px;
+        font-weight: 100;
+      }
+
+      form {
+        border-top: 1px solid rgba(255 255 255 / 5%);
+        padding-top: 20px;
+
+        display: flex;
+        flex-direction: column;
+
+        .inputs {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          position: relative;
+          width: 40%;
+          margin-top: 20px;
+
+          @include laptop {
+            width: 60%;
+          }
+          @include tablet {
+            width: 90%;
+          }
+          @include mobile {
+            width: 100%;
+          }
+
+          input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background-color: #333;
+            border-radius: 4px;
+            padding: 10px;
+            padding-left: 40px;
+            font-size: 14px;
+            color: white;
+            padding-right: 10px;
+
+            &:hover,
+            &:active,
+            &:focus {
+              background-color: #444;
+              -webkit-box-shadow: inset 0px 0px 6px 2px rgba(0, 0, 0, 0.2);
+              -moz-box-shadow: inset 0px 0px 6px 2px rgba(0, 0, 0, 0.2);
+              box-shadow: inset 0px 0px 6px 2px rgba(0, 0, 0, 0.2);
+            }
+          }
+
+          .icons {
+            position: absolute;
+            color: rgb(217, 217, 217);
+            font-size: 18px;
+          }
+
+          .person {
+            top: 8px;
+            left: 13px;
+          }
+          .email {
+            top: 56px;
+            left: 13px;
+          }
+          .lock {
+            bottom: 64px;
+            left: 13px;
+          }
+
+          .update-btn {
+            align-self: flex-start;
+            border: none;
+            outline: none;
+            background-color: var(--blue);
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            padding: 10px 15px;
+            color: white;
+            box-shadow: 0 0 30px 2px rgba(0 0 0 / 55%);
+            margin-top: 10px;
+
+            &:hover {
+              background-color: cornflowerblue;
+              transition: all 225ms linear;
+              cursor: pointer;
+            }
+
+            &:active {
+              box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.2),
+                inset 0px 4px 15px rgba(0, 0, 0, 0.15);
+            }
+          }
+        }
+      }
+    }
+  }
+}

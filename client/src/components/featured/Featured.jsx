@@ -15,9 +15,7 @@ function Featured({ type, setGenre }) {
         const res = await axios.get(`movies/random?type=${type}`, {
           headers: {
             token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYjMxYjU1YTFjNjcyMmYzYjMwODZlYiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NzI2ODIzNDQsImV4cCI6MTY3Mzk3ODM0NH0.wg2Q0fvjJ6V2uC4dNnCyMvFmHfQHXnqd9zd3NByCXi8",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
           },
         });
         setMovie(res.data[0]);
@@ -25,8 +23,14 @@ function Featured({ type, setGenre }) {
         console.log(err);
       }
     };
-    getRandomMovie();
+
+    // const interval = setInterval(() => {
+      getRandomMovie();
+    // }, [5000]);
+
+    // return () => clearInterval(interval);
   }, [type]);
+
   return (
     <div className="featured">
       {type && (
@@ -47,6 +51,7 @@ function Featured({ type, setGenre }) {
             <option value="horror">Horror</option>
             <option value="romance">Romance</option>
             <option value="sci-fi">Sci-fi</option>
+            <option value="sports">Sports</option>
             <option value="thriller">Thriller</option>
             <option value="western">Western</option>
             <option value="anime">Anime</option>
@@ -57,7 +62,6 @@ function Featured({ type, setGenre }) {
       )}
 
       <img src={movie.img} alt="" />
-
       <div className="info">
         {/* <img src={movie.imgTitle} className="info-subtitle" /> */}
         <h2 className="info-title">{movie.title}</h2>

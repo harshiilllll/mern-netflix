@@ -9,6 +9,7 @@ import { AuthContext } from "./authContext/AuthContext";
 import WatchDetail from "./pages/watchDetail/WatchDetail";
 import Search from "./pages/search/Search";
 import WatchList from "./pages/watchList/WatchList";
+import Settings from "./pages/settingsPage/Settings";
 
 function App() {
   const {user} = useContext(AuthContext);
@@ -31,6 +32,7 @@ function App() {
             <Route path="/watchdetail" element={user ? <WatchDetail /> : <Navigate to="login" />} />
             <Route path="/search" element={user ? <Search /> : <Navigate to="login" />} />
             <Route path="/watchlist" element={user ? <WatchList /> : <Navigate to="login" />} />
+            <Route path="/settings" element={user ? <Settings /> : <Navigate to="login" />} />
           </React.Fragment>
         )}
       </Routes>

@@ -5,6 +5,7 @@ import { WatchContext } from "../../watchlistContext/WatchContext";
 import PlayCircleRoundedIcon from "@mui/icons-material/PlayCircleRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import "./watchList.scss";
+import Footer from "../../components/footer/Footer";
 
 const WatchList = () => {
   const { watchlist } = useContext(WatchContext);
@@ -66,6 +67,7 @@ const WatchList = () => {
           <h2 className="noMovies">No moives or series in your watch list. Browse and add some!</h2>
         )}
       </div>
+      <Footer />
     </>
   );
 };

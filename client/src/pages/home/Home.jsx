@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Featured from '../../components/featured/Featured';
+import Footer from '../../components/footer/Footer';
 import List from '../../components/list/List';
 import Navbar from '../../components/navbar/Navbar';
 import './home.scss';
@@ -21,7 +22,6 @@ const Home = ({ type }) => {
                     }
                 );
                 setLists(res.data);
-                console.log(res.data);
             } catch (err) {
                 console.log(err);
             }
@@ -37,6 +37,7 @@ const Home = ({ type }) => {
             {lists.map((list) => (
                 <List key={list._id} list={list} />
             ))}
+            <Footer />
         </div>
     );
 }

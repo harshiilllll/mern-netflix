@@ -1,3 +1,5 @@
+@import "../../app.scss";
+
 .navbar {
   color: white;
   padding: 15px 50px;
@@ -6,12 +8,18 @@
   width: 100%;
   font-size: 14px;
   z-index: 999;
-  background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.3) 50%);
+  // background: linear-gradient(to top, transparent 0%, var(--main-color) 50%);
   font-family: "Ubuntu", sans-serif;
+  transition: .2s;
+
+  @include mobile {
+    padding: 15px 10px;
+  }
 
   &.scrolled {
-    background: var(--main-color);
-    opacity: 0.95;
+    background: #030303;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 20px 2px rgba(0 0 0 / 40%);
   }
 
   .container {
@@ -20,58 +28,42 @@
     justify-content: space-between;
     background-color: transparent;
 
-    .left {
-      display: flex;
-      align-items: center;
-      gap: 40px;
+    .mobile-nav {
+      display: none;
 
-      .logo {
-        height: 30px;
-        cursor: pointer;
-        color: var(--accent-color);
-        letter-spacing: 2px;
+      &.opened {
+        display: flex;
+        align-items: center;
+        // justify-content: center;
+        flex-direction: column;
+        position: absolute;
+        padding: 2vh;
+        backdrop-filter: blur(5px);
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 100vh;
+        margin-top: 59px;
+        padding-bottom: 80px;
+        background-color: var(--main-color);
+        gap: 20px;
+        overflow: auto;
+      }
+      .link {
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+        background-color: var(--accent-color);
+        padding: 10px 20px;
+        border-radius: 8px;
         font-weight: 900;
       }
-    }
-
-    .center {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-      font-size: 18px;
-      text-transform: uppercase;
-      font-weight: 500;
-      font-family: "Montserrat", sans-serif;
-
-      .link {
-        color: white;
-        text-decoration: none;
-      }
-
-      .active {
-        color: var(--accent-color);
-      }
-
-      span {
-        cursor: pointer;
-
-        &:hover {
-          color: var(--accent-color);
-        }
-      }
-
-    }
-
-    .right {
-      display: flex;
-      align-items: center;
-      gap: 15px;
 
       .search {
         display: flex;
         align-items: center;
-        position: absolute;
+        position: relative;
 
         input {
           background: rgba(255, 255, 255, 0.2);
@@ -81,10 +73,8 @@
           padding: 10px 40px 10px 10px;
           height: 100%;
           color: #fff;
-          position: absolute;
-          right: 3px;
-          top: -17px;
-          height: 36px;
+          width: 80vw;
+          height: 46px;
           border-radius: 8px;
           -webkit-box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.5);
           box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.5);
@@ -100,6 +90,115 @@
           }
         }
       }
+    }
+
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+
+      .link {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        img {
+        }
+        &:hover img {
+          animation: move 4s linear infinite;
+        }
+      }
+      @keyframes move {
+        0% {
+          transform: translateX(-3px);
+        }
+        50% {
+          transform: translateY(-4px) translateX(4px);
+        }
+        100% {
+          transform: translateY(0px) translateX(0px);
+        }
+      }
+
+      @include mobile {
+        gap: 10px;
+      }
+
+      .menu-icon {
+        display: none;
+        font-size: 30px;
+        transform: translateY(2px);
+
+        @include laptop {
+          display: block;
+        }
+      }
+
+      .logo {
+        height: 30px;
+        cursor: pointer;
+        color: white;
+        letter-spacing: -1px;
+        font-weight: 900;
+      }
+    }
+
+    .center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      font-size: 18px;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-family: "Montserrat", sans-serif;
+      color: #b3b3b3;
+
+      @include laptop {
+        display: none;
+      }
+
+      .search {
+        display: flex;
+        align-items: center;
+        position: relative;
+        cursor: pointer;
+        gap: 10px;
+
+        @include laptop {
+          display: none;
+        }
+
+        .icon {
+          cursor: pointer;
+        }
+        &:hover {
+          color: white;
+        }
+      }
+
+      .link {
+      color: #b3b3b3;
+        text-decoration: none;
+      }
+
+      .active {
+        color: white;
+      }
+
+      span {
+        cursor: pointer;
+
+        &:hover {
+          color: white;
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
 
       .profile {
         display: flex;
@@ -122,7 +221,9 @@
           background-color: var(--main-color);
           position: absolute;
           top: 30px;
+          right: 5px;
           gap: 5px;
+          white-space: nowrap;
 
           span {
             cursor: pointer;
@@ -138,6 +239,52 @@
             display: flex;
           }
         }
+      }
+    }
+  }
+
+  .searchPopup {
+    display: flex;
+    height: 200vh;
+    width: 200vw;
+    background: rgba(0 0 0 / 80%);
+    position: fixed;
+    z-index: 10000;
+    display: flex;
+
+    form {
+      position: fixed;
+      top: 35px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #212121;
+      padding: 0 56px 0 0;
+      height: 48px;
+      width: 50vw;
+      border: 1px solid rgb(51, 51, 51);
+      z-index: 1000;
+      display: flex;
+      justify-content: flex-start;
+
+      .icons {
+        height: 48px;
+        width: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #e3e3e3;
+      }
+
+
+      input {
+        height: 100%;
+        width: 100%;
+        font-size: 20px;
+        background: transparent;
+        color: rgb(194, 194, 194);
+        border: none;
+        outline: none;
       }
     }
   }

@@ -4,11 +4,21 @@
 
 
 :root {
-  --main-color: #202125;
-  --accent-color: #FFA500;
-  --hover-color: rgb(26, 26, 26);
+  // --main-color: #202125;
+  // --accent-color: #FFA500;
+  // --hover-color: rgb(26, 26, 26);
+  // --font-color: white;
+  // --card-color: #2a2c31;
+
+  --main-color: #0c0c0c;
+  --accent-color: #ff9c08;
+  --hover-color: rgb(24, 24, 24);
   --font-color: white;
+  --secondary-color: rgb(186, 186, 186);
   --card-color: #2a2c31;
+
+  --red: #ff5722;
+  --blue: #03a8f5;
 }
 
 ::-webkit-scrollbar {
@@ -55,7 +65,7 @@ link {
 }
 
 @mixin mini {
-  @media (max-width: 3) {
+  @media (max-width: 380px) {
     @content;
   }
 }
@@ -68,6 +78,12 @@ link {
 
 @mixin tablet {
   @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (max-width: 1024px) {
     @content;
   }
 }
