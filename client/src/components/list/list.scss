@@ -162,14 +162,13 @@
     border: .02px solid rgba($color: #fff, $alpha: 0.5);
     cursor: pointer;
     display: none;
-    @include tablet {
-      display: block;
-    }
+
     &:hover {
       background-color: var(--accent-color);
       color: black;
     }
-    @include tablet {
+    @include mobile {
+      display: block;
       font-size: 26px;
       right:55px;
     }
@@ -185,9 +184,6 @@
     cursor: pointer;
     display: none;
 
-    @include mobile {
-      display: block;
-    }
     &:hover {
       background-color: var(--accent-color);
       color: black;
@@ -195,6 +191,7 @@
     @include mobile {
       font-size: 26px;
       right: 20px;
+      display: block;
     }
   }
 

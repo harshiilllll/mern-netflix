@@ -1,7 +1,7 @@
 @import "../../app.scss";
 
 .featured {
-  height: 90vh;
+  height: 80vh;
   position: relative;
   margin-bottom: 50px;
 
@@ -19,7 +19,7 @@
     background: linear-gradient(
       0deg,
       #0c0c0c 0,
-      rgba(0, 0, 0, 0.1) 50%,
+      rgba(0, 0, 0, 0.2) 50%,
       #0c0c0c 100%
     );
     transition: 0.5s;
@@ -31,7 +31,7 @@
     top: 80px;
     left: 50px;
     font-size: 30px;
-    font-weight: 700;
+    font-weight: 600;
     color: white;
     display: flex;
     align-items: center;
@@ -39,10 +39,12 @@
     z-index: 100;
 
     select {
-      border: 1px solid white;
+      // border: 1px solid white;
       background-color: var(--main-color);
       color: white;
-      padding: 5px 10px;
+      padding: 8px 10px;
+      outline: none;
+      border-radius: 8px;
     }
   }
 
@@ -59,12 +61,13 @@
     bottom: 80px;
     color: white;
     z-index: 2;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px) brightness(95%); 
+    border-radius: 8px;
+    box-shadow: 0 0 400px 5px rgba(0 0 0 / 15%);
 
-    // border: 1px solid rgba(255, 255, 255, 0.18);
+    // border: 1px solid rgba(255, 255, 255, 1);
     display: flex;
     flex-direction: column;
-    padding: 25px 15px 25px 0px;
 
     @include tablet {
       width: 80%;
@@ -81,10 +84,9 @@
     }
 
     .info-title {
-      width: 100%;
-      font-weight: 600;
+      font-weight: 900;
       text-transform: capitalize;
-      font-size: 78px;
+      font-size: 74px;
       margin-bottom: 10px;
       font-family: "Ubuntu";
 
@@ -149,8 +151,8 @@
       }
 
       &.more {
-        color: var(--accent-color);
-        background-color: rgba(0 0 0 / 55%);
+        color: var(--font-color);
+        background-color: rgba(0 0 0 / 45%);
       }
 
       .icon {

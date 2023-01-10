@@ -10,7 +10,7 @@
   z-index: 999;
   // background: linear-gradient(to top, transparent 0%, var(--main-color) 50%);
   font-family: "Ubuntu", sans-serif;
-  transition: .2s;
+  transition: 0.2s;
 
   @include mobile {
     padding: 15px 10px;
@@ -103,6 +103,7 @@
         gap: 5px;
 
         img {
+          // display: none;
         }
         &:hover img {
           animation: move 4s linear infinite;
@@ -147,7 +148,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 30px;
+      gap: 25px;
       font-size: 18px;
       text-transform: uppercase;
       font-weight: 500;
@@ -178,7 +179,7 @@
       }
 
       .link {
-      color: #b3b3b3;
+        color: #b3b3b3;
         text-decoration: none;
       }
 
@@ -275,7 +276,6 @@
         cursor: pointer;
         color: #e3e3e3;
       }
-
 
       input {
         height: 100%;
