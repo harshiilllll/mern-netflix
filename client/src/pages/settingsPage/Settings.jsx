@@ -18,6 +18,7 @@ const Settings = () => {
   const [updatedUser, setUpdatedUser] = useState(null);
   const [newUser, setNewUser] = useState(user);
   const [isLoading, setIsLoading] = useState(true); // added
+  const [uploadProgress, setUploadProgress] = useState("");
 
   const fileInputRef = useRef();
 
@@ -42,31 +43,67 @@ const Settings = () => {
       // added
       getUser();
     }
-  }, [isLoading]); // added
+  }, [isLoading, newUser._id]); // added
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUpdatedUser({
       ...updatedUser,
-      [name]: name === "isAdmin" && value === "true" ? true : value,
+      [name]: value,
     });
   };
 
   const updateUser = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`users/${user._id}`, updatedUser, {
-        headers: {
-          token:
-            "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-        },
-      });
+      const response = await axios.put(
+        `users/${user._id}`,
+        { ...updatedUser },
+        {
+          headers: {
+            token:
+              "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+          },
+        }
+      );
       window.alert("Your data has been successfully updated!");
+      setNewUser(response.data);
     } catch (error) {
       console.error(error);
     }
   };
 
+  const profilePicUpload = (event) => {
+    const file = event.target.files[0];
+    const fileName = `${newUser._id}-${newUser.username}/profile_pic`;
+    const storageRef = ref(storage, "profilePics/" + fileName);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        console.log("Upload is " + progress + "% done");
+        setUploadProgress("Upload is " + progress + "% done click on save");
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          console.log("File available at", downloadURL);
+          setUpdatedUser({
+            ...updatedUser,
+            profilePic: downloadURL,
+          });
+        });
+      }
+    );
+  };
+
+  console.log(updatedUser);
   let strFromGoogle = newUser.fromGoogle.toString();
   let strIsAdmin = newUser.isAdmin.toString();
 
@@ -124,8 +161,21 @@ const Settings = () => {
       </div>
       <div className="container">
         <div className="right">
-          <img src={newUser.profilePic} alt="user" />
-          <input type="file" ref={fileInputRef} />
+          <img htmlFor="file" src={newUser.profilePic} alt="user" />
+          <label htmlFor="file">Change Profile</label>
+          <small>{uploadProgress}</small>
+          <input
+            onChange={(e) => {
+              profilePicUpload(e);
+              setTimeout(() => {
+                updateUser(e);
+              }, 5000);
+            }}
+            id="file"
+            style={{ display: "none" }}
+            type="file"
+            ref={fileInputRef}
+          />
         </div>
         <div className="left">
           <h3 className="username">{newUser.username}</h3>

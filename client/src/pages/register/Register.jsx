@@ -11,6 +11,8 @@ import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../firebase";
 import { googleLogin } from "../../authContext/apiCalls";
 import { AuthContext } from "../../authContext/AuthContext";
+import NARUTOLOGO from "../../img/NARUTOLOGO.png";
+import LOGO from "../../img/LOGO.png";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -36,6 +38,7 @@ const Register = () => {
     try {
       await axios.post("auth/register", { email, username, password });
       navigate("/login");
+      window.alert("Registered successfully! Login to continue.");
     } catch (error) {
       console.log(error);
     }
@@ -61,19 +64,17 @@ const Register = () => {
       <div className="container">
         <div className="side-panel">
           <div className="logo">
-            <img
-              src="https://www.pngarts.com/files/11/Akatsuki-Cloud-PNG-Image.png"
-              alt="logo"
-            />
-            <h1>NARUTO</h1>
+            <img className="logo-img" src={LOGO} alt="" />
+            <img className="logo-text" src={NARUTOLOGO} alt="" />
           </div>
           <div></div>
         </div>
-        <form className="form">
+        <form onSubmit={handleRegister} className="form">
           <h2>Sign Up</h2>
           <div className="inputs">
             <PersonIcon className="icons person" />
             <input
+              name="username"
               type="text"
               placeholder="Username"
               ref={usernameRef}
@@ -81,6 +82,7 @@ const Register = () => {
             />
             <AlternateEmailIcon className="icons email" />
             <input
+              name="email"
               type="email"
               placeholder="Email address"
               ref={emailRef}
@@ -88,6 +90,7 @@ const Register = () => {
             />
             <LockIcon className="icons lock" />
             <input
+              name="password"
               type="password"
               placeholder="Password"
               ref={passwordRef}
@@ -100,7 +103,7 @@ const Register = () => {
               <ArrowForwardIosIcon className="icon" />
             </button>
           ) : (
-            <button className="register-btn" onClick={handleRegister}>
+            <button type="submit" className="register-btn">
               Sign Up
             </button>
           )}

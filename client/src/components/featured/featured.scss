@@ -1,11 +1,11 @@
 @import "../../app.scss";
 
 .featured {
-  height: 80vh;
+  height: 100vh;
   position: relative;
   margin-bottom: 50px;
 
-  @include mobile {
+  @include tablet {
     height: 75vh;
   }
 
@@ -16,12 +16,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      0deg,
-      #0c0c0c 0,
-      rgba(0, 0, 0, 0.2) 50%,
-      #0c0c0c 100%
-    );
+    background: radial-gradient(circle, #0c0c0c40 7%, #0c0c0cdc 100%);
     transition: 0.5s;
     z-index: 1;
   }
@@ -52,16 +47,19 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top;
+    filter: brightness(100%);
+    user-select: none;
   }
 
   .info {
     width: 40%;
     position: absolute;
     left: 50px;
-    bottom: 80px;
+    bottom: 260px;
     color: white;
     z-index: 2;
-    backdrop-filter: blur(2px) brightness(95%); 
+    backdrop-filter: blur(2px) brightness(95%);
     border-radius: 8px;
     box-shadow: 0 0 400px 5px rgba(0 0 0 / 15%);
 
@@ -69,13 +67,13 @@
     display: flex;
     flex-direction: column;
 
+    @include laptop {
+      width: 50%;
+    }
+
     @include tablet {
       width: 80%;
       bottom: 20px;
-    }
-
-    @include laptop {
-      width: 70%;
     }
 
     @include mobile {
@@ -84,11 +82,11 @@
     }
 
     .info-title {
-      font-weight: 900;
+      font-weight: 700;
       text-transform: capitalize;
-      font-size: 74px;
+      font-size: 72px;
       margin-bottom: 10px;
-      font-family: "Ubuntu";
+      font-family: "Montserrat";
 
       @include tablet {
         font-size: 58px;
@@ -108,7 +106,7 @@
 
     .desc {
       margin-bottom: 25px;
-      font-family: "Ubuntu";
+      font-family: "Montserrat";
       color: #d7d7d7;
       display: -webkit-box;
       text-overflow: ellipsis;
@@ -131,6 +129,7 @@
       border-radius: 8px;
       border: none;
       gap: 5px;
+      width: 150px;
       font-size: 16px;
       cursor: pointer;
 
@@ -140,13 +139,41 @@
       }
 
       &.play {
-        background-color: var(--accent-color);
         color: black;
         box-sizing: border-box;
+
+        background: linear-gradient(247deg, #ff3a00, #f39527, #ff4600);
+        background-size: 600% 600%;
+
+        -webkit-animation: gradient 4s ease infinite;
+        animation: gradient 10s ease infinite;
 
         &:hover {
           color: white;
           background-color: var(--main-color);
+        }
+
+        @-webkit-keyframes gradient {
+          0% {
+            background-position: 0% 87%;
+          }
+          50% {
+            background-position: 100% 14%;
+          }
+          100% {
+            background-position: 0% 87%;
+          }
+        }
+        @keyframes gradient {
+          0% {
+            background-position: 0% 87%;
+          }
+          50% {
+            background-position: 100% 14%;
+          }
+          100% {
+            background-position: 0% 87%;
+          }
         }
       }
 
@@ -157,6 +184,47 @@
 
       .icon {
         font-size: 30px;
+      }
+    }
+  }
+
+  .card {
+    height: 350px;
+    width: 250px;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    right: 50px;
+    bottom: 250px;
+    z-index: 300;
+    border-radius: 8px;
+    box-shadow: 0 2px 40px 3px rgba(0 0 0 / 45%);
+    transition: 0.5s;
+
+    overflow: hidden;
+
+    &:hover {
+      animation: float 4s ease infinite;
+      filter: brightness(110%);
+      box-shadow: 0 2px 60px 3px rgba(0 0 0 / 55%);
+    }
+
+    @include tablet {
+      display: none;
+    }
+
+    @keyframes float {
+      0% {
+        box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+        transform: translateY(0px);
+      }
+      50% {
+        box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+        transform: translateY(-40px);
+      }
+      100% {
+        box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+        transform: translateY(0px);
       }
     }
   }

@@ -4,10 +4,13 @@ import SearchIcon from "@mui/icons-material/Search";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import "./navbar.scss";
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../authContext/AuthContext";
 import { logout } from "../../authContext/AuthActions";
 import KeyboardBackspaceRoundedIcon from "@mui/icons-material/KeyboardBackspaceRounded";
+import NARUTOLOGO from "../../img/NARUTOLOGO.png";
+import LOGO from "../../img/LOGO.png";
+import axios from "axios";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -54,23 +57,20 @@ const Navbar = () => {
       setIsSearchOpen(false);
     }
   };
-
+  
   return (
     <div className={isScrolled ? "navbar scrolled" : "navbar"}>
       <div className="container">
         <div className="left">
-          {isOpen ? (
-            <CloseRoundedIcon className="menu-icon" onClick={toggleMenu} />
-          ) : (
-            <MenuRoundedIcon className="menu-icon" onClick={toggleMenu} />
-          )}
+          
           <Link to="/" className="link" style={{ textDecoration: "none" }}>
             <img
+              className="logo-img"
               style={{ height: "30px" }}
-              src="https://cdn.discordapp.com/attachments/973353945223295086/1062011046052757504/Akatsuki-Cloud-PNG-Image.png"
+              src={LOGO}
               alt=""
             />
-            <h1 className="logo">NARUTO</h1>
+            <img className="logo-text" src={NARUTOLOGO} />
           </Link>
         </div>
 
@@ -194,7 +194,12 @@ const Navbar = () => {
               onClick={handleBackgroundClick}
             >
               <form onSubmit={handleSearch}>
-                <div className="icons" id="closeSearch" title="Back" onClick={handleBackgroundClick}>
+                <div
+                  className="icons"
+                  id="closeSearch"
+                  title="Back"
+                  onClick={handleBackgroundClick}
+                >
                   <KeyboardBackspaceRoundedIcon className="icon" />
                 </div>
                 <input
@@ -214,26 +219,30 @@ const Navbar = () => {
             <img src={user.profilePic} alt="user-pic" />
             <ArrowDropDownIcon className="icon" />
             <div className="options">
-              <span>{user.username}</span>
               <Link
                 style={{ textDecoration: "none", color: "var(--font-color)" }}
                 to="/settings"
               >
                 <span>Settings</span>
               </Link>
-              <Link
+              <span
                 style={{ textDecoration: "none", color: "var(--font-color)" }}
-                to="/login"
                 onClick={() => {
                   if (window.confirm("Are u sure u want to logout?")) {
                     dispatch(logout());
+                    navigate("/login");
                   }
                 }}
               >
                 <span>Logout</span>
-              </Link>
+              </span>
             </div>
           </div>
+          {isOpen ? (
+            <CloseRoundedIcon className="menu-icon" onClick={toggleMenu} />
+          ) : (
+            <MenuRoundedIcon className="menu-icon" onClick={toggleMenu} />
+          )}
         </div>
       </div>
     </div>

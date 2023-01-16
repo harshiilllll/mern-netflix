@@ -7,6 +7,8 @@ import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import LoginIcon from "@mui/icons-material/Login";
 import { auth, provider } from "../../firebase";
 import { signInWithPopup } from "firebase/auth";
+import NARUTOLOGO from "../../img/NARUTOLOGO.png";
+import LOGO from "../../img/LOGO.png";
 
 import "./login.scss";
 
@@ -40,16 +42,14 @@ const Login = () => {
       <div className="container">
         <div className="side-panel">
           <div className="logo">
-            <img
-              src="https://www.pngarts.com/files/11/Akatsuki-Cloud-PNG-Image.png"
-              alt="logo"
-            />
-            <h1>NARUTO</h1>
+            <img className="logo-img" src={LOGO} alt="" />
+            <img className="logo-text" src={NARUTOLOGO} alt="" />
+
             {/* <span className="copy">Copyright &copy; Harshil</span> */}
           </div>
           <div></div>
         </div>
-        <form className="form">
+        <form onSubmit={handleLogin} className="form">
           <h2>Sign In</h2>
           <div className="inputs">
             <AlternateEmailIcon className="icons person" />
@@ -57,15 +57,17 @@ const Login = () => {
               type="email"
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
             <LockIcon className="icons lock" />
             <input
+              required
               type="password"
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button className="login-btn" onClick={handleLogin}>
+          <button className="login-btn" type="submit">
             Sign In <LoginIcon />
           </button>
           <span className="or">OR</span>

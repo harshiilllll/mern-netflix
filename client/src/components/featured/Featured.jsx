@@ -25,7 +25,7 @@ function Featured({ type, setGenre }) {
     };
 
     // const interval = setInterval(() => {
-      getRandomMovie();
+    getRandomMovie();
     // }, [5000]);
 
     // return () => clearInterval(interval);
@@ -88,6 +88,16 @@ function Featured({ type, setGenre }) {
             </button>
           </Link>
         </div>
+      </div>
+
+      <div className="card">
+        <Link
+          to="/watchdetail"
+          style={{ textDecoration: "none" }}
+          state={{ movie: movie }}
+        >
+          <img src={movie.imgSm} alt="" />
+        </Link>
       </div>
     </div>
   );

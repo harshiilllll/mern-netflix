@@ -32,7 +32,7 @@
       padding: 70px;
       gap: 70px;
       color: white;
-      font-family: "Ubuntu";
+      font-family: "Montserrat";
 
       @include tablet {
         flex-direction: column;
@@ -78,7 +78,8 @@
         }
 
         p {
-          font-size: 14px;
+          font-size: 16px;
+          line-height: 24px;
         }
 
         .topInfo {

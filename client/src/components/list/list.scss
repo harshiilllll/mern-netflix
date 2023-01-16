@@ -138,6 +138,7 @@
 // }
 
 .list {
+  transform: translateY(-240px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -147,9 +148,13 @@
   position: relative;
   padding-inline: 50px;
   overflow: hidden;
+  z-index: 200;
 
   @include mobile {
     padding-inline: 10px;
+  }
+  @include tablet {
+    transform: translateY(0px);
   }
 
   .left {
@@ -159,7 +164,7 @@
     color: lightgray;
     border-radius: 50%;
     font-size: 34px;
-    border: .02px solid rgba($color: #fff, $alpha: 0.5);
+    border: 0.02px solid rgba($color: #fff, $alpha: 0.5);
     cursor: pointer;
     display: none;
 
@@ -170,7 +175,7 @@
     @include mobile {
       display: block;
       font-size: 26px;
-      right:55px;
+      right: 55px;
     }
   }
   .right {
@@ -180,7 +185,7 @@
     color: lightgray;
     border-radius: 50%;
     font-size: 34px;
-    border: .02px solid rgba($color: #fff, $alpha: 0.5);
+    border: 0.02px solid rgba($color: #fff, $alpha: 0.5);
     cursor: pointer;
     display: none;
 
@@ -200,7 +205,6 @@
     background-color: lightgray;
     color: gray;
   }
-
 
   &:hover .right,
   &:hover .left {
