@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Ubuntu:wght@400;700&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 :root {
   // --main-color: #202125;
@@ -41,7 +40,7 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background:linear-gradient(
+  background: linear-gradient(
     45deg,
     rgba(251, 193, 0, 0.8) 0%,
     rgba(255, 150, 65, 0.8) 64%,
@@ -51,7 +50,7 @@
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background:linear-gradient(
+  background: linear-gradient(
     145deg,
     rgba(251, 193, 0, 1) 0%,
     rgba(255, 150, 65, 1) 64%,

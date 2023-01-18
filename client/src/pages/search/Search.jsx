@@ -66,13 +66,11 @@ const Search = () => {
                       <span className="movieIsSeries">{strIsSeries}</span>
                       <span className="movieLimit">{movie.limit}+</span>
                     </div>
-                    <Link
-                      to="/watch"
-                      state={{ movie: movie }}
+                    <div
                       style={{ color: "inherit", textDecoration: "none" }}
                     >
                       <PlayCircleRoundedIcon className="playIcon" />
-                    </Link>
+                    </div>
                   </Link>
                 </div>
               );

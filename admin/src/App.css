@@ -12,6 +12,8 @@
 
   --border-radius: 6px; 
 
+  --chart-background: linear-gradient(30deg, rgba(0 0 0 / 85%) 30%, rgba(0 0 0 / 75%)), url(https://wallpaperaccess.com/full/324626.jpg);
+
   /* --back-color: #ededed;
   --main-color: #e0e0e0;
   --sidebar-color: #ffffff;
@@ -60,3 +62,4 @@ body {
   text-decoration: none;
   color: inherit;
 }
+

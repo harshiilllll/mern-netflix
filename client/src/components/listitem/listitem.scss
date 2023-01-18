@@ -44,7 +44,7 @@
       top: 0;
       z-index: 1;
     }
-    &:hover .movieTrailer{
+    &:hover .movieTrailer {
       display: block;
     }
 
@@ -59,6 +59,7 @@
       position: relative;
       height: 100%;
       overflow: hidden;
+      width: 100%;
 
       &::before {
         content: "";
@@ -176,7 +177,7 @@
         bottom: 5px;
         right: 5px;
         margin: auto;
-        transition: .25s;
+        transition: 0.25s;
 
         &:hover {
           color: var(--accent-color);

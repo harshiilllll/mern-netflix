@@ -6,7 +6,6 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
-import { useEffect } from "react";
 
 export default function Topbar() {
   const { dispatch } = useContext(AuthContext);
@@ -27,6 +26,8 @@ export default function Topbar() {
       root.style.setProperty("--line-color", "#000000");
       root.style.setProperty("--tick-color", "rgb(149, 211, 255)");
       root.style.setProperty("--border-radius", "4px");
+      root.style.setProperty("--chart-background", "linear-gradient(30deg, rgba(0 0 0 / 85%) 30%, rgba(0 0 0 / 75%)), url(https://wallpaperaccess.com/full/324626.jpg);");
+
     } else {
       root.style.setProperty("--back-color", "#25272a");
       root.style.setProperty("--main-color", "#1a1c1e");
@@ -38,6 +39,7 @@ export default function Topbar() {
       root.style.setProperty("--tick-color", "#2d7d46");
       root.style.setProperty("--button-color", "#5865f2");
       root.style.setProperty("--border-radius", "6px");
+      root.style.setProperty("--chart-background", "linear-gradient(30deg, rgba(0 0 0 / 15%) 30%, rgba(0 0 0 / 25%)), url(https://images.pexels.com/photos/140234/pexels-photo-140234.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);");
     }
 
     setDarkMode(!darkMode);

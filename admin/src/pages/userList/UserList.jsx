@@ -1,6 +1,6 @@
 import "./userList.css";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { DeleteOutline, DoneRounded, CloseRounded, Delete, VerifiedUser, AccountCircle } from "@mui/icons-material";
+import { Delete, VerifiedUser, AccountCircle } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { deleteUser, getUsers } from "../../context/userContext/apiCalls";
 import { useContext, useEffect, useState } from "react";

@@ -7,7 +7,7 @@
   border-radius: var(--border-radius);
   color: black !important;
   font-weight: 500;
-  background-image: linear-gradient(30deg, rgba(0 0 0 / 85%) 30%, rgba(0 0 0 / 75%)), url(https://wallpaperaccess.com/full/324626.jpg);
+  background: var(--chart-background);
   background-size: cover;
   background-position: center center;
   backdrop-filter: brightness(20%);

@@ -1,6 +1,6 @@
 import "./listList.css";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { Delete, DeleteOutline } from "@mui/icons-material";
+import { Delete } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { ListContext } from "../../context/listContext/ListContext";
