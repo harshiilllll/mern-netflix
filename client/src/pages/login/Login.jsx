@@ -16,10 +16,12 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { dispatch } = useContext(AuthContext);
+  const [error, setError] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
-    login({ email, password }, dispatch);
+    login({ email, password }, dispatch, setError);
+    setError("");
   };
 
   const signinWithGoogle = async (e) => {
@@ -56,7 +58,10 @@ const Login = () => {
             <input
               type="email"
               placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setError("");
+              }}
               required
             />
             <LockIcon className="icons lock" />
@@ -67,6 +72,9 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+          <span className="error">
+            {error && <p className="error">{error}</p>}
+          </span>
           <button className="login-btn" type="submit">
             Sign In <LoginIcon />
           </button>

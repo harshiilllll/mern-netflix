@@ -75,6 +75,7 @@ export default function NewProduct() {
   const handleSubmit = (e) => {
     e.preventDefault();
     createMovie(movie, dispatch)
+    window.alert("Movie Created!")
   }
 
   return (

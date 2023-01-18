@@ -22,6 +22,7 @@ export default function NewProduct() {
   const handleSubmit = (e) => {
     e.preventDefault();
     createUser(user, dispatch)
+    window.alert("User Created!")
   }
 
   return (
