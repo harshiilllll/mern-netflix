@@ -25,8 +25,8 @@ function Featured({ type, setGenre }) {
     };
 
     // const interval = setInterval(() => {
-    getRandomMovie();
-    // }, [5000]);
+      getRandomMovie();
+    // }, [8000]);
 
     // return () => clearInterval(interval);
   }, [type]);

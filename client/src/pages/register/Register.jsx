@@ -21,6 +21,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const { dispatch } = useContext(AuthContext);
+  const [error, setError] = useState("");
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -40,7 +41,8 @@ const Register = () => {
       navigate("/login");
       window.alert("Registered successfully! Login to continue.");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      setError("Username or Email already taken");
     }
   };
 
@@ -97,6 +99,9 @@ const Register = () => {
               required
             />
           </div>
+          <span className="error">
+            {error && <p className="error">{error}</p>}
+          </span>
           {!username || !email || !password ? (
             <button className="register-btn" onClick={handleStart}>
               Get Started

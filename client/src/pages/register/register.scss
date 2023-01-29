@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   background-size: cover;
+  overflow-x: hidden;
 
   .container {
     width: 100%;
@@ -125,6 +126,42 @@
         padding: 20px;
       }
 
+      .error {
+        background-color: red;
+        border-radius: 4px;
+        padding: 5px 10px;
+        width: 100%;
+        font-size: 14px;
+        text-align: center;
+        animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+
+        &:empty {
+          display: none;
+        }
+        @keyframes shake {
+          10%,
+          90% {
+            transform: translate3d(-1px, 0, 0);
+          }
+
+          20%,
+          80% {
+            transform: translate3d(2px, 0, 0);
+          }
+
+          30%,
+          50%,
+          70% {
+            transform: translate3d(-4px, 0, 0);
+          }
+
+          40%,
+          60% {
+            transform: translate3d(4px, 0, 0);
+          }
+        }
+      }
+
       h2 {
         font-size: 34px;
         margin-bottom: 20px;
@@ -180,7 +217,7 @@
       }
 
       .register-btn {
-        height: 50px;
+        min-height: 50px;
         width: 100%;
         border: none;
         outline: none;
@@ -201,10 +238,11 @@
         }
 
         &:active {
-          box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.2), inset 0px 4px 15px rgba(0, 0, 0, 0.15);
+          box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.2),
+            inset 0px 4px 15px rgba(0, 0, 0, 0.15);
         }
       }
-      
+
       .google-btn {
         background: transparent;
         font-weight: 400;
@@ -224,7 +262,8 @@
         }
 
         &:active {
-          box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.2), inset 0px 4px 15px rgba(0, 0, 0, 0.15);
+          box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.2),
+            inset 0px 4px 15px rgba(0, 0, 0, 0.15);
         }
       }
 

@@ -4,13 +4,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import "./navbar.scss";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../authContext/AuthContext";
 import { logout } from "../../authContext/AuthActions";
 import KeyboardBackspaceRoundedIcon from "@mui/icons-material/KeyboardBackspaceRounded";
 import NARUTOLOGO from "../../img/NARUTOLOGO.png";
 import LOGO from "../../img/LOGO.png";
-import axios from "axios";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -70,7 +69,7 @@ const Navbar = () => {
               src={LOGO}
               alt=""
             />
-            <img className="logo-text" src={NARUTOLOGO} />
+            <img className="logo-text" alt="" src={NARUTOLOGO} />
           </Link>
         </div>
 

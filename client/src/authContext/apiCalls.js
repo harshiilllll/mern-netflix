@@ -8,7 +8,7 @@ export const login = async (user, dispatch, setError) => {
     const res = await axios.post("auth/login", user);
     dispatch(loginSuccess(res.data));
   } catch (err) {
-    setError("Wrong username or password");
+    setError("Wrong Email or Password");
     dispatch(loginFailure());
   }
 };
