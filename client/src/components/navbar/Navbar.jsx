@@ -56,12 +56,11 @@ const Navbar = () => {
       setIsSearchOpen(false);
     }
   };
-  
+
   return (
     <div className={isScrolled ? "navbar scrolled" : "navbar"}>
       <div className="container">
         <div className="left">
-          
           <Link to="/" className="link" style={{ textDecoration: "none" }}>
             <img
               className="logo-img"
