@@ -19,9 +19,6 @@ mongoose
   .catch((err) => console.log(err));
 app.use(express.json());
 
-app.use("/", (req, res) => {
-  res.sendFile("./index.html");
-});
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/movies", movieRoute);
