@@ -20,7 +20,7 @@ mongoose
 app.use(express.json());
 
 app.use("/", (req, res) => {
-  res.send("Naruto API Server");
+  res.sendFile("./index.html");
 });
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
