@@ -1,3 +1,5 @@
+@import "../../app.scss";
+
 .navbar {
   color: white;
   padding: 15px 50px;
@@ -6,12 +8,17 @@
   width: 100%;
   font-size: 14px;
   z-index: 999;
-  background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.3) 50%);
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
+  transition: 0.2s;
+
+  @include mobile {
+    padding: 15px 10px;
+  }
 
   &.scrolled {
-    background: var(--main-color);
-    opacity: 0.95;
+    background: #030303;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 20px 2px rgba(0 0 0 / 40%);
   }
 
   .container {
@@ -20,41 +27,170 @@
     justify-content: space-between;
     background-color: transparent;
 
+    .mobile-nav {
+      display: none;
+
+      &.opened {
+        display: flex;
+        align-items: center;
+        // justify-content: center;
+        flex-direction: column;
+        position: absolute;
+        padding: 2vh;
+        backdrop-filter: blur(5px);
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 100vh;
+        margin-top: 59px;
+        padding-bottom: 80px;
+        background-color: var(--nav-color);
+        background: linear-gradient(
+          45deg,
+          rgba(251, 193, 0) 0%,
+          rgba(255, 150, 65) 64%,
+          rgba(255, 72, 0) 100%
+        );
+        gap: 20px;
+        overflow: auto;
+      }
+      .link {
+        text-decoration: none;
+        color: white;
+        font-size: 20px;
+        background-color: var(--main-color);
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 900;
+      }
+
+      .search {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        input {
+          background: rgba(255, 255, 255, 0.2);
+          border: none;
+          display: block;
+          outline: none;
+          padding: 10px 40px 10px 10px;
+          height: 100%;
+          color: #fff;
+          width: 80vw;
+          height: 46px;
+          border-radius: 8px;
+          -webkit-box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.5);
+        }
+
+        .icon {
+          cursor: pointer;
+          position: absolute;
+          right: 5px;
+
+          &:hover {
+            color: var(--accent-color);
+          }
+        }
+      }
+    }
+
     .left {
       display: flex;
       align-items: center;
       gap: 40px;
 
-      .logo {
-        height: 30px;
-        cursor: pointer;
-        color: var(--accent-color);
-        letter-spacing: 2px;
-        font-weight: 900;
+      .link {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        .logo-img {
+          // transform: rotate(-30deg);
+        }
+
+        .logo-text {
+          height: 30px;
+        }
+
+        &:hover .logo-img {
+          animation: float 6s linear infinite;
+        }
+      }
+      @keyframes float {
+        0% {
+          filter: drop-shadow(0 5px 15px 0px rgba(0, 0, 0, 0.6));
+          transform: translatey(0px);
+        }
+        40% {
+          filter: drop-shadow(0 25px 15px 0px rgba(0, 0, 0, 0.2));
+          transform: translatey(-3px) translateX(-2px);
+        }
+        70% {
+          filter: drop-shadow(0 25px 15px 0px rgba(0, 0, 0, 0.2));
+          transform: translatey(2px) translateX(2px);
+        }
+        100% {
+          filter: drop-shadow(0 5px 15px 0px rgba(0, 0, 0, 0.6));
+          transform: translatey(0px);
+        }
       }
 
+      @include mobile {
+        gap: 10px;
+      }
     }
 
     .center {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 15px;
+      gap: 25px;
       font-size: 18px;
       text-transform: uppercase;
       font-weight: 500;
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: "Montserrat", sans-serif;
+      color: #b3b3b3;
+
+      @include laptop {
+        display: none;
+      }
+
+      .search {
+        display: flex;
+        align-items: center;
+        position: relative;
+        cursor: pointer;
+        gap: 10px;
+
+        @include laptop {
+          display: none;
+        }
+
+        .icon {
+          cursor: pointer;
+        }
+        &:hover {
+          color: white;
+        }
+      }
 
       .link {
-        color: white;
+        color: #b3b3b3;
         text-decoration: none;
+      }
+
+      .active {
+        color: white;
       }
 
       span {
         cursor: pointer;
 
         &:hover {
-          color: var(--accent-color);
+          color: white;
         }
       }
     }
@@ -64,24 +200,19 @@
       align-items: center;
       gap: 15px;
 
-      .icon {
-        cursor: pointer;
-
-        &:hover {
-          color: var(--accent-color);
-        }
-      }
-
       .profile {
         display: flex;
         gap: 4px;
         position: relative;
         align-items: center;
+        margin-left: 15px;
 
         img {
           border-radius: 100%;
           height: 30px;
-          border: 1px solid #e3e3e3;
+          width: 30px;
+          border: 0.3px solid #e3e3e355;
+          object-fit: cover;
         }
 
         .options {
@@ -92,7 +223,9 @@
           background-color: var(--main-color);
           position: absolute;
           top: 30px;
+          right: 5px;
           gap: 5px;
+          white-space: nowrap;
 
           span {
             cursor: pointer;
@@ -108,6 +241,60 @@
             display: flex;
           }
         }
+      }
+
+      .menu-icon {
+        display: none;
+        font-size: 30px;
+
+        @include laptop {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .searchPopup {
+    display: flex;
+    height: 200vh;
+    width: 200vw;
+    background: rgba(0 0 0 / 80%);
+    position: fixed;
+    z-index: 10000;
+    display: flex;
+
+    form {
+      position: fixed;
+      top: 35px;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #212121;
+      padding: 0 56px 0 0;
+      height: 48px;
+      width: 50vw;
+      border: 1px solid rgb(51, 51, 51);
+      z-index: 1000;
+      display: flex;
+      justify-content: flex-start;
+
+      .icons {
+        height: 48px;
+        width: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #e3e3e3;
+      }
+
+      input {
+        height: 100%;
+        width: 100%;
+        font-size: 20px;
+        background: transparent;
+        color: rgb(194, 194, 194);
+        border: none;
+        outline: none;
       }
     }
   }

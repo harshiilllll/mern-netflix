@@ -1,6 +1,6 @@
 import "./userList.css";
-import { DataGrid , GridToolbar } from "@mui/x-data-grid";
-import { DeleteOutline } from "@mui/icons-material";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { Delete, VerifiedUser, AccountCircle } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { deleteUser, getUsers } from "../../context/userContext/apiCalls";
 import { useContext, useEffect, useState } from "react";
@@ -60,6 +60,16 @@ export default function UserList() {
       flex: 4,
     },
     {
+      field: "isAdmin",
+      cellClassName: "cell",
+      headerClassName: "header-cell",
+      headerName: "Admin",
+      flex: 1,
+      renderCell: (params) => {
+        return Boolean(params.row.isAdmin) ? <VerifiedUser className="yes" /> : <AccountCircle />;
+      },
+    },
+    {
       field: "action",
       headerName: "Action",
       headerClassName: "header-cell",
@@ -71,10 +81,10 @@ export default function UserList() {
             <Link
               to={{ pathname: "/user/" + params.row._id, user: params.row }}
             >
-              <button className="userListEdit">Edit</button>
+              <button className="userListEdit">View</button>
             </Link>
-            <DeleteOutline
-              className="userListDelete"
+            <Delete
+              className="del userListDelete"
               onClick={() => handleDelete(params.row._id)}
             />
           </>
@@ -89,9 +99,9 @@ export default function UserList() {
         <Loader /> // added this line
       ) : (
         <Box
-          m="25px 0 0 0"
-          height="84vh"
-          width="84.5vw"
+          m="0 0 0 0"
+          height="93vh"
+          width="94%"
           sx={{
             "& .MuiDataGrid-root": {
               border: "none",
@@ -99,23 +109,20 @@ export default function UserList() {
             "& .MuiDataGrid-cell": {
               borderBottom: "none",
             },
-            "& .name-column--cell": {
-              color: "yellowgreen",
-            },
             "& .MuiDataGrid-columnHeaders": {
-              backgroundColor: "#727cf5",
+              backgroundColor: "var(--accent-color)",
               borderBottom: "none",
             },
             "& .MuiDataGrid-virtualScroller": {
-              backgroundColor: "#0c1427",
+              backgroundColor: "var(--main-color)",
             },
             "& .MuiDataGrid-footerContainer": {
               borderTop: "none",
-              backgroundColor: "#727cf5",
-              color: "#FFFFFF"
+              backgroundColor: "var(--accent-color)",
+              color: "var(--font-color)",
             },
             "& .MuiCheckbox-root": {
-              color: "#b7ebde !important",
+              color: "var(--tick-color) !important",
             },
           }}
         >
@@ -124,7 +131,7 @@ export default function UserList() {
             rows={users}
             columns={columns}
             getRowId={(r) => r._id}
-            components={{ Toolbar: GridToolbar }} 
+            components={{ Toolbar: GridToolbar }}
           />
         </Box>
       )}

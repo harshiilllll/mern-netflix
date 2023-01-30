@@ -1,7 +1,7 @@
 .home{
     display: flex;
     flex-direction: column;
-    width: calc(100vw - 160px);
+    width: 96%;
     background-color: var(--back-color);
     color: var(--font-color);
     height: calc(100vh - 51px);

@@ -1,13 +1,36 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Ubuntu:wght@400;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 :root {
-  --main-color: #202125;
-  --accent-color: #FFA500;
-  --hover-color: rgb(26, 26, 26);
+  // --main-color: #202125;
+  // --accent-color: #FFA500;
+  // --hover-color: rgb(26, 26, 26);
+  // --font-color: white;
+  // --card-color: #2a2c31;
+
+  --accent-gradient: linear-gradient(
+    90deg,
+    rgba(251, 193, 0, 1) 0%,
+    rgba(255, 150, 65, 1) 64%,
+    rgba(255, 72, 0, 1) 100%
+  );
+
+  --main-color: #0c0c0c;
+  --accent-color: #ff9c08;
+  --hover-color: rgb(24, 24, 24);
+  --font-color: white;
+  --secondary-color: rgb(186, 186, 186);
+  --card-color: #2a2c31;
+
+  --nav-color: #030303;
+
+  --red: #ff5722;
+  --blue: #03a8f5;
 }
 
 ::-webkit-scrollbar {
-  background-color: #1a1a1e;
-  width: 13px;
+  width: 8px;
 }
 
 /* Track */
@@ -17,12 +40,26 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #757678;
+  background: linear-gradient(
+    45deg,
+    rgba(251, 193, 0, 0.8) 0%,
+    rgba(255, 150, 65, 0.8) 64%,
+    rgba(255, 72, 0, 0.8) 100%
+  );
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #75767895;
+  background: linear-gradient(
+    145deg,
+    rgba(251, 193, 0, 1) 0%,
+    rgba(255, 150, 65, 1) 64%,
+    rgba(255, 72, 0, 1) 100%
+  );
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 * {
@@ -33,7 +70,7 @@
 
 body {
   margin: 0;
-  font-family: "Barlow Condensed", sans-serif;
+  font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -49,7 +86,7 @@ link {
 }
 
 @mixin mini {
-  @media (max-width: 3) {
+  @media (max-width: 380px) {
     @content;
   }
 }
@@ -62,6 +99,12 @@ link {
 
 @mixin tablet {
   @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (max-width: 1024px) {
     @content;
   }
 }

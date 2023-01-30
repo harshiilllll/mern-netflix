@@ -5,12 +5,15 @@
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   background-color: var(--main-color);
   border-radius: var(--border-radius);
-  border: 2px solid var(--border-color);
-  color: black;
+  color: black !important;
   font-weight: 500;
+  background: var(--chart-background);
+  background-size: cover;
+  background-position: center center;
+  backdrop-filter: brightness(20%);
 }
 
 .chartTitle {
   margin-bottom: 20px;
-  color: white;
+  color: var(--font-color);
 }

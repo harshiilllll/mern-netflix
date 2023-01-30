@@ -6,7 +6,7 @@
   top: 0;
   z-index: 999;
   color: var(--font-color);
-  border-bottom: 1px solid var(--accent-color);
+  border-bottom: 1px solid var(--back-color);
 }
 
 .topbarWrapper {
@@ -15,6 +15,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.logo-icon {
+  margin-right: 10px;
+  cursor: pointer;
 }
 
 .logo {
@@ -35,9 +40,16 @@
 }
 
 .logout-btn {
-  color: white;
+  color: var(--font-color);
 }
 .logout-btn:hover {
-  color: rgb(165, 165, 165);
+  color: rgb(132, 132, 132);
 }
 
+.theme-icon {
+  margin-right: 10px;
+}
+
+.theme-icon:hover {
+  color: rgb(132, 132, 132);
+}

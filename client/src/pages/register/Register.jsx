@@ -1,12 +1,18 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import "./register.scss";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import PersonIcon from '@mui/icons-material/Person';
-import LockIcon from '@mui/icons-material/Lock';
-import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import PersonIcon from "@mui/icons-material/Person";
+import LockIcon from "@mui/icons-material/Lock";
+import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../../firebase";
+import { googleLogin } from "../../authContext/apiCalls";
+import { AuthContext } from "../../authContext/AuthContext";
+import NARUTOLOGO from "../../img/NARUTOLOGO.png";
+import LOGO from "../../img/LOGO.png";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -14,17 +20,18 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
+  const { dispatch } = useContext(AuthContext);
+  const [error, setError] = useState("");
+
   const emailRef = useRef();
   const passwordRef = useRef();
   const usernameRef = useRef();
-
 
   const handleStart = (e) => {
     e.preventDefault();
     setEmail(emailRef.current.value);
     setPassword(passwordRef.current.value);
     setUsername(usernameRef.current.value);
-
   };
 
   const handleRegister = async (e) => {
@@ -32,45 +39,90 @@ const Register = () => {
     try {
       await axios.post("auth/register", { email, username, password });
       navigate("/login");
+      window.alert("Registered successfully! Login to continue.");
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      setError("Username or Email already taken");
+    }
+  };
+
+  const signinWithGoogle = async (e) => {
+    e.preventDefault();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = {
+        username: result.user.displayName,
+        email: result.user.email,
+        profilePic: result.user.photoURL,
+      };
+      await googleLogin(user, dispatch);
+    } catch (error) {
+      console.error(error);
     }
   };
 
   return (
-
     <div className="register">
       <div className="container">
         <div className="side-panel">
           <div className="logo">
-            <img
-              src="https://www.pngarts.com/files/11/Akatsuki-Cloud-PNG-Image.png"
-              alt="logo"
-            />
-            <h1>NARUTO</h1>
+            <img className="logo-img" src={LOGO} alt="" />
+            <img className="logo-text" src={NARUTOLOGO} alt="" />
           </div>
           <div></div>
         </div>
-        <form className="form">
+        <form onSubmit={handleRegister} className="form">
           <h2>Sign Up</h2>
           <div className="inputs">
             <PersonIcon className="icons person" />
-            <input type="text" placeholder="Username" ref={usernameRef} required />
+            <input
+              name="username"
+              type="text"
+              placeholder="Username"
+              ref={usernameRef}
+              required
+            />
             <AlternateEmailIcon className="icons email" />
-            <input type="email" placeholder="Email address" ref={emailRef} required />
+            <input
+              name="email"
+              type="email"
+              placeholder="Email address"
+              ref={emailRef}
+              required
+            />
             <LockIcon className="icons lock" />
-            <input type="password" placeholder="Password" ref={passwordRef} required />
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              ref={passwordRef}
+              required
+            />
           </div>
+          <span className="error">
+            {error && <p className="error">{error}</p>}
+          </span>
           {!username || !email || !password ? (
             <button className="register-btn" onClick={handleStart}>
               Get Started
               <ArrowForwardIosIcon className="icon" />
             </button>
           ) : (
-            <button className="register-btn" onClick={handleRegister}>
+            <button type="submit" className="register-btn">
               Sign Up
             </button>
           )}
+          <span className="or">OR</span>
+          <button
+            className="register-btn google-btn"
+            onClick={signinWithGoogle}
+          >
+            <img
+              src="https://cdn.discordapp.com/attachments/1031916555535134742/1061892730097254437/google-icon.png"
+              alt="google icon"
+            />
+            Google
+          </button>
 
           <span className="newto">
             Already registered?

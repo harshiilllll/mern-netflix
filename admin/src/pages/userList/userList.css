@@ -5,7 +5,7 @@
 .userListUser {
   display: flex;
   align-items: center;
-  color: white;
+  color: var(--font-color);
   font-weight: 600;
 }
 
@@ -17,32 +17,52 @@
   margin-right: 10px;
 }
 
-.userListEdit{
-    border: none;
-    border-radius: 10px;
-    padding: 5px 10px;
-    background-color: #3bb077;
-    color: white;
-    cursor: pointer;
-    margin-right: 20px;
+.userListEdit {
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 5px 10px;
+  background-color: var(--button-color);
+  color: var(--font-color);
+  cursor: pointer;
+  margin-right: 20px;
 }
 
-.userListDelete{
-    color: red;
-    cursor: pointer;
+.userListEdit:hover{
+  background-color: var(--border-color);
 }
 
-.productAddButton{
+.userListDelete {
+  color: red;
+  cursor: pointer;
+}
+
+.productAddButton {
   margin-bottom: 20px;
 }
 
 .header-cell {
-  color: white;
+  color: var(--font-color);
   font-weight: 700;
 }
 
+.MuiDataGrid-cell {
+  color: var(--font-color) !important;
+}
 
 .MuiDataGrid-root .MuiDataGrid-cell {
   border: none !important;
-  color: white;
+  color: var(--font-color);
+}
+
+.MuiDataGrid-sortIcon,
+.MuiDataGrid-sortIconButton,
+.MuiDataGrid-menuIcon,
+.MuiDataGrid-menuIconButton,
+.MuiDataGrid-filterIcon {
+  color: var(--font-color) !important;
+}
+
+.css-zylse7-MuiButtonBase-root-MuiIconButton-root.Mui-disabled {
+  background-color: transparent;
+  color: rgba(132, 132, 132, 0.46) !important;
 }

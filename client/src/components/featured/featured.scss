@@ -1,14 +1,32 @@
+@import "../../app.scss";
+
 .featured {
-  height: 90vh;
+  height: 100vh;
   position: relative;
   margin-bottom: 50px;
+
+  @include tablet {
+    height: 75vh;
+  }
+
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #0c0c0c40 7%, #0c0c0cdc 100%);
+    transition: 0.5s;
+    z-index: 1;
+  }
 
   .category {
     position: absolute;
     top: 80px;
-    left: 50px;
+    right: 50px;
     font-size: 30px;
-    font-weight: 700;
+    font-weight: 600;
     color: white;
     display: flex;
     align-items: center;
@@ -16,10 +34,12 @@
     z-index: 100;
 
     select {
-      border: 1px solid white;
+      // border: 1px solid white;
       background-color: var(--main-color);
       color: white;
-      padding: 5px 10px;
+      padding: 8px 10px;
+      outline: none;
+      border-radius: 8px;
     }
   }
 
@@ -27,30 +47,54 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(30%);
-
+    object-position: top;
+    filter: brightness(100%);
+    user-select: none;
   }
-  
 
   .info {
     width: 40%;
     position: absolute;
     left: 50px;
-    bottom: 80px;
+    bottom: 260px;
     color: white;
+    z-index: 2;
+    backdrop-filter: blur(2px) brightness(95%);
+    border-radius: 8px;
+    box-shadow: 0 0 400px 5px rgba(0 0 0 / 15%);
 
-    // border: 1px solid rgba(255, 255, 255, 0.18);
+    // border: 1px solid rgba(255, 255, 255, 1);
     display: flex;
     flex-direction: column;
-    padding: 25px 15px 25px 0px;
+
+    @include laptop {
+      width: 50%;
+    }
+
+    @include tablet {
+      width: 80%;
+      bottom: 20px;
+    }
+
+    @include mobile {
+      width: 90%;
+      left: 10px;
+    }
 
     .info-title {
-      width: 100%;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: capitalize;
-      font-size: 78px;
+      font-size: 72px;
       margin-bottom: 10px;
-      font-family: "Ubuntu";
+      font-family: "Montserrat";
+
+      @include tablet {
+        font-size: 58px;
+      }
+
+      @include mobile {
+        font-size: 42px;
+      }
     }
 
     .info-subtitle {
@@ -62,8 +106,14 @@
 
     .desc {
       margin-bottom: 25px;
-      font-family: "Ubuntu";
+      font-family: "Montserrat";
       color: #d7d7d7;
+      display: -webkit-box;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .buttons {
@@ -75,10 +125,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px 20px 10px 10px;
-      border-radius: 34px;
+      padding: 7px 20px 7px 7px;
+      border-radius: 8px;
       border: none;
       gap: 5px;
+      width: 150px;
       font-size: 16px;
       cursor: pointer;
 
@@ -88,22 +139,92 @@
       }
 
       &.play {
-        color: white;
-        background-color: var(--main-color);
+        color: black;
+        box-sizing: border-box;
+
+        background: linear-gradient(247deg, #ff3a00, #f39527, #ff4600);
+        background-size: 600% 600%;
+
+        -webkit-animation: gradient 4s ease infinite;
+        animation: gradient 10s ease infinite;
 
         &:hover {
-          background-color: var(--accent-color);
-          color: black;
+          color: white;
+          background-color: var(--main-color);
+        }
+
+        @-webkit-keyframes gradient {
+          0% {
+            background-position: 0% 87%;
+          }
+          50% {
+            background-position: 100% 14%;
+          }
+          100% {
+            background-position: 0% 87%;
+          }
+        }
+        @keyframes gradient {
+          0% {
+            background-position: 0% 87%;
+          }
+          50% {
+            background-position: 100% 14%;
+          }
+          100% {
+            background-position: 0% 87%;
+          }
         }
       }
 
       &.more {
-        color: var(--accent-color);
-        background-color: transparent;
+        color: var(--font-color);
+        background-color: rgba(0 0 0 / 45%);
       }
 
       .icon {
-        font-size: 32px;
+        font-size: 30px;
+      }
+    }
+  }
+
+  .card {
+    height: 350px;
+    width: 250px;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    right: 50px;
+    bottom: 250px;
+    z-index: 300;
+    border-radius: 8px;
+    box-shadow: 0 2px 40px 3px rgba(0 0 0 / 45%);
+    transition: 0.5s;
+
+    overflow: hidden;
+
+    &:hover {
+      animation: float 4s ease infinite;
+      filter: brightness(110%);
+      box-shadow: 0 2px 60px 3px rgba(0 0 0 / 55%);
+    }
+
+    @include tablet {
+      display: none;
+    }
+
+    @keyframes float {
+      0% {
+        box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+        transform: translateY(0px);
+      }
+      50% {
+        box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+        transform: translateY(-40px);
+      }
+      100% {
+        box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+        transform: translateY(0px);
       }
     }
   }

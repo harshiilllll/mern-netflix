@@ -1,51 +1,40 @@
 import "./list.scss";
-import ChevronLeftRoundedIcon  from "@mui/icons-material/ChevronLeftRounded";
-import ChevronRightRoundedIcon  from "@mui/icons-material/ChevronRightRounded";
+import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
+import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 
 import Listitem from "../listitem/Listitem";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 export default function List({ list }) {
-  const [slideNumber, setSlideNumber] = useState(0);
-  const [isMoved, setIsMoved] = useState(false);
-  const [clicklimit, setClicklimit] = useState(window.innerWidth / 230)
+  const sliderRef = useRef();
 
-  const listRef = useRef();
-
-  const handleClick = (direction) => {
-    setIsMoved(true);
-    let distance = listRef.current.getBoundingClientRect().x - 50;
-    if (direction === "left" && slideNumber > 0) {
-      setSlideNumber(slideNumber - 1);
-      listRef.current.style.transform = `translateX(${230 + distance}px)`;
+  const slideClick = (direction) => {
+    if (direction === "left") {
+      sliderRef.current.scrollLeft -= 300;
     }
-    if (direction === "right" && slideNumber < 10 - clicklimit) {
-      setSlideNumber(slideNumber + 1);
-      listRef.current.style.transform = `translateX(${-230 + distance}px)`;
+
+    if (direction === "right") {
+      sliderRef.current.scrollLeft += 300;
     }
   };
 
+  
   return (
     <div className="list">
+      <ChevronLeftRoundedIcon
+        className={`left`}
+        onClick={() => slideClick("left")}
+      />
       <span className="listTitle">{list.title}</span>
-      <div className="wrapper">
-        <div className="container" ref={listRef}>
-          {list.content.map((item, i) => (
-            <Listitem index={i} key={i} item={item} />
-          ))}
-        </div>
-        <div className="arrows">
-          <ChevronRightRoundedIcon 
-            className="sliderArrow right"
-            onClick={() => handleClick("right")}
-          />
-          <ChevronLeftRoundedIcon 
-            className="sliderArrow left"
-            // style={{ display: !isMoved && "none" }}
-            onClick={() => handleClick("left")}
-          />
-        </div>
+      <div className="slider" ref={sliderRef}>
+        {list.content.map((item, i) => (
+          <Listitem index={i} key={i} item={item} />
+        ))}
       </div>
+      <ChevronRightRoundedIcon
+        className={`right`}
+        onClick={() => slideClick("right")}
+      />
     </div>
   );
 }

@@ -24,7 +24,6 @@ export default function NewProduct() {
       ...movie,
       [name]: name === "isSeries" && value === "true" ? true : value
     });
-    console.log(movie);
   }
 
   const upload = (items) => {
@@ -61,7 +60,6 @@ export default function NewProduct() {
     });
   };
 
-  console.log(movie);
 
   const handleUpload = (e) => {
     e.preventDefault();
@@ -77,6 +75,7 @@ export default function NewProduct() {
   const handleSubmit = (e) => {
     e.preventDefault();
     createMovie(movie, dispatch)
+    window.alert("Movie Created!")
   }
 
   return (

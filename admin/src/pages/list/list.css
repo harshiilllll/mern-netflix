@@ -1,4 +1,4 @@
-.product {
+/* .product {
   flex: 4;
   padding: 20px;
 }
@@ -30,7 +30,6 @@
 
 .productTopRight {
   padding: 20px;
-  margin: 20px;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
 }
@@ -72,7 +71,6 @@
 
 .productBottom {
   padding: 20px;
-  margin: 20px;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
 }
@@ -89,7 +87,7 @@
 
 .productFormLeft > label {
   margin-bottom: 10px;
-  color: gray;
+  color: var(--font-color);
 }
 
 .productFormLeft > input {
@@ -130,4 +128,4 @@
   color:white;
   font-weight: 600;
   cursor: pointer;
-}
+} */

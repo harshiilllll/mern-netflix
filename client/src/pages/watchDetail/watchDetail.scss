@@ -1,0 +1,184 @@
+@import "../../app.scss";
+
+.watchDetail::-webkit-scrollbar {
+  display: none;
+}
+
+.watchDetail {
+  min-height: 100vh;
+  background-color: var(--main-color);
+  overflow-x: hidden;
+
+  .container {
+    height: 80vh;
+    width: 100vw;
+    position: relative;
+    padding-top: 60px;
+
+    background-size: cover;
+    background-position: center;
+
+    .background {
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .content {
+      backdrop-filter: blur(40px) brightness(50%);
+      height: 100%;
+      width: 100%;
+      display: flex;
+      padding: 70px;
+      gap: 70px;
+      color: white;
+      font-family: "Montserrat";
+
+      @include tablet {
+        flex-direction: column;
+      }
+
+      @include mobile {
+        padding: 10px;
+      }
+
+      img {
+        height: 330px;
+        max-width: 250px;
+        object-fit: cover;
+        text-align: center;
+        box-shadow: 0px 8px 30px 3px rgba(0 0 0 / 75%);
+        border-radius: 8px;
+
+        @include mobile {
+          align-self: center;
+        }
+      }
+
+      .info {
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+
+        @include tablet {
+          width: 80vw;
+        }
+
+        @include mobile {
+          width: 92vw;
+        }
+
+        h1 {
+          font-size: 46px;
+
+          @include mobile {
+            font-size: calc(20px + 100%);
+            word-wrap: break-word;
+          }
+        }
+
+        p {
+          font-size: 16px;
+          line-height: 24px;
+        }
+
+        .topInfo {
+          display: flex;
+          gap: 15px;
+          align-items: center;
+
+          .duration {
+            border: none;
+            padding: 0;
+            font-size: 14px;
+          }
+        }
+
+        .bottomInfo {
+          display: flex;
+          gap: 5px;
+
+          span {
+            font-size: 10px;
+            background-color: #ff5722;
+            color: white;
+            border-radius: 4px;
+            padding: 4px 6px;
+            border: none;
+            width: fit-content;
+
+            &.year {
+              background-color: #03a8f5;
+            }
+
+            &.limit {
+              background-color: transparent;
+              border: 1px solid lightgray;
+            }
+          }
+        }
+
+        span {
+          padding: 3px 8px;
+          border: 1px solid white;
+          border-radius: 50px;
+          width: fit-content;
+          text-align: center;
+          text-transform: capitalize;
+          font-size: 11px;
+          cursor: default;
+        }
+
+        .buttons {
+          display: flex;
+          gap: 10px;
+
+          .watch-btn {
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 15px;
+            width: fit-content;
+            background-color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+            transition: 0.5s;
+
+            &:hover,
+            &:active,
+            &:focus {
+              background-color: var(--main-color);
+              color: white;
+            }
+
+            &:disabled {
+              background-color: gray;
+
+              &:hover {
+                background-color: gray;
+                color: white;
+                cursor: not-allowed;
+              }
+            }
+          }
+          .watchlist-btn {
+            background-color: var(--main-color);
+            color: white;
+
+            &:hover,
+            &:active,
+            &:focus {
+              background-color: var(--accent-color);
+              color: black;
+            }
+          }
+        }
+      }
+    }
+  }
+}

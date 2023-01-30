@@ -1,5 +1,6 @@
 .productList {
   flex: 4;
+  overflow: auto;
 }
 
 .productListItem {
@@ -18,25 +19,61 @@
 
 .productListEdit {
   border: none;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   padding: 5px 10px;
-  background-color: #3bb077;
-  color: white;
+  background-color: var(--button-color);
+  color: var(--font-color);
   cursor: pointer;
   margin-right: 20px;
 }
 
-.productListDelete {
-  color: red;
+.productListEdit:hover{
+  background-color: var(--border-color);
+}
+
+.del {
+  color: #c00;
   cursor: pointer;
 }
 
+.del:hover {
+  color: red;
+}
+
 .header-cell {
-  color: white;
+  color: var(--font-color);
   font-weight: 700;
+}
+
+.MuiToolbar-root {
+  /* border-radius: 10px !important; */
+  color: var(--font-color);
+}
+
+.MuiDataGrid-footerContainer {
+  border-top: none;
+  background-color: var(--accent-color);
+  color: var(--font-color) !important;
+}
+
+
+.MuiDataGrid-cell {
+  color: var(--font-color) !important;
 }
 
 .MuiDataGrid-root .MuiDataGrid-cell {
   border: none !important;
-  color: white;
+  color: var(--font-color);
+}
+
+.MuiDataGrid-columnSeparator {
+  visibility: hidden;
+}
+
+.yes {
+  color: green;
+}
+
+.no {
+  color: red;
 }

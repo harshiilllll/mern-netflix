@@ -1,0 +1,17 @@
+@import '../../app.scss';
+
+.footer {
+    background-color: var(--main-color);
+    color: lightgray;
+    padding: 25px 50px;
+    width: 100%;
+    box-shadow: 0 -4px 30px 4px rgba(0 0 0 / 25%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include mobile {
+        font-size: 14px;
+        padding: 15px;
+    }
+}

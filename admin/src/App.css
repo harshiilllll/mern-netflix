@@ -1,12 +1,32 @@
 :root {
-  --back-color: #070d19;
-  --main-color: #0c1427;
-  --border-color: #0f1a34;
-  --accent-color: #727cf5;
+  --back-color: #25272a;
+  --main-color: #0f0e0e;
+  --sidebar-color: #141414;
+  --border-color: #0e0e0e;
+  --accent-color: #141414;
   --font-color: #FFFFFF;
 
+  --line-color: #929292;
+  --tick-color: #2d7d46;
+  --button-color: #5865f2;
+
   --border-radius: 6px; 
+
+  --chart-background: linear-gradient(30deg, rgba(0 0 0 / 85%) 30%, rgba(0 0 0 / 75%)), url(https://wallpaperaccess.com/full/324626.jpg);
+
+  /* --back-color: #ededed;
+  --main-color: #e0e0e0;
+  --sidebar-color: #ffffff;
+  --border-color: #d2d2d2;
+  --accent-color: #cbcbcb;
+  --font-color: #000000;
+
+  --line-color: #000000;
+  --tick-color: rgb(149, 211, 255);
+
+  --border-radius: 4px;  */
 }
+
 
 ::-webkit-scrollbar {
   background-color: var(--back-color);
@@ -42,3 +62,4 @@ body {
   text-decoration: none;
   color: inherit;
 }
+

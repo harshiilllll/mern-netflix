@@ -1,6 +1,6 @@
 import "./listList.css";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { DeleteOutline } from "@mui/icons-material";
+import { Delete } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { ListContext } from "../../context/listContext/ListContext";
@@ -22,15 +22,36 @@ export default function ListList() {
   };
 
   const columns = [
-    { field: "_id", headerName: "ID",  headerClassName: "header-cell", width: 220 },
-    { field: "title", headerName: "List Title",  headerClassName: "header-cell",width: 240 },
-    { field: "genre", headerName: "Genre",  headerClassName: "header-cell",width: 100 },
-    { field: "type", headerName: "Type",  headerClassName: "header-cell",width: 100 },
+    {
+      field: "_id",
+      headerName: "ID",
+      headerClassName: "header-cell",
+      width: 220,
+    },
+    {
+      field: "title",
+      headerName: "List Title",
+      headerClassName: "header-cell",
+      width: 240,
+    },
+    {
+      field: "genre",
+      headerName: "Genre",
+      headerClassName: "header-cell",
+      width: 100,
+    },
+    {
+      field: "type",
+      headerName: "Type",
+      headerClassName: "header-cell",
+      width: 100,
+    },
 
     {
       field: "action",
       headerName: "Action",
-     width: 120,  headerClassName: "header-cell",
+      flex: 2,
+      headerClassName: "header-cell",
       renderCell: (params) => {
         return (
           <>
@@ -39,8 +60,8 @@ export default function ListList() {
             >
               <button className="productListEdit">Edit</button>
             </Link>
-            <DeleteOutline
-              className="productListDelete"
+            <Delete
+              className="del productListDelete"
               onClick={() => handleDelete(params.row._id)}
             />
           </>
@@ -55,9 +76,9 @@ export default function ListList() {
         <Loader /> // added this line
       ) : (
         <Box
-          m="25px 0 0 0"
-          height="84vh"
-          width="84.5vw"
+          m="0 0 0 0"
+          height="93vh"
+          width="94%"
           sx={{
             "& .MuiDataGrid-root": {
               border: "none",
@@ -65,23 +86,20 @@ export default function ListList() {
             "& .MuiDataGrid-cell": {
               borderBottom: "none",
             },
-            "& .name-column--cell": {
-              color: "yellowgreen",
-            },
             "& .MuiDataGrid-columnHeaders": {
-              backgroundColor: "#727cf5",
+              backgroundColor: "var(--accent-color)",
               borderBottom: "none",
             },
             "& .MuiDataGrid-virtualScroller": {
-              backgroundColor: "#0c1427",
+              backgroundColor: "var(--main-color)",
             },
             "& .MuiDataGrid-footerContainer": {
               borderTop: "none",
-              backgroundColor: "#727cf5",
-              color: "#FFFFFF",
+              backgroundColor: "var(--accent-color)",
+              color: "var(--font-color)",
             },
             "& .MuiCheckbox-root": {
-              color: "#b7ebde !important",
+              color: "var(--tick-color) !important",
             },
           }}
         >

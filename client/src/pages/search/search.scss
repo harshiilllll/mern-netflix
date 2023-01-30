@@ -1,0 +1,236 @@
+@import "../../app.scss";
+
+.results{
+  font-size: 28px;
+  padding: 100px 50px 0 50px;
+  background-color: var(--main-color);
+  color: var(--font-color);
+  p{
+    color: var(--accent-color);
+    align-self: flex-end;
+  }
+  @include mobile {
+    padding: 100px 20px 0 20px;
+    font-size: 22px;
+  }
+}
+
+.searchPage {
+  background-color: var(--main-color);
+  padding: 50px;
+  color: var(--font-color);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
+  grid-gap: 10px;
+  min-height: 90vh;
+
+  @include mobile {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 160px));
+  padding: 10px;
+  }
+
+
+  .movieCard {
+    height: 340px;
+    cursor: pointer;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include mobile {
+      height: 240px;
+    }
+
+    .moviePoster {
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+      width: 100%;
+
+      &::before {
+        content: "";
+        bottom: -110px;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(0deg, #111111 50%, transparent);
+        transition: 0.5s;
+        z-index: 1;
+      }
+      .movieImg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.5s;
+        filter: brightness(90%);
+      }
+    }
+
+    &:hover .movieImg {
+      transform: translateY(-50px);
+      filter: blur(7px) brightness(60%);
+    }
+
+    .movieInfo {
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      padding: 10px;
+      width: 100%;
+      z-index: 2;
+      transition: 0.5s;
+      display: flex;
+
+      flex-direction: column;
+
+      .movieTitle {
+        font-size: 18px;
+        line-height: 20px;
+
+        @include mobile {
+          font-size: 14px;
+        }
+      }
+      .movieDesc {
+        display: none;
+        font-size: 14px;
+        margin-top: 10px;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+
+        @include mobile {
+          font-size: 12px;
+        }
+      }
+
+      .movieBottomInfo {
+        margin-top: 10px;
+        font-size: 13px;
+        gap: 5px;
+        display: flex;
+        align-items: center;
+
+        @include mobile {
+          font-size: 11px;
+        }
+
+        .movieGenre {
+          text-transform: capitalize;
+        }
+
+        .dot {
+          height: 4px;
+          width: 4px;
+          background-color: rgba(255, 255, 255, 0.486);
+          border-radius: 50%;
+        }
+      }
+
+      .tags {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 10px;
+
+        .movieYear {
+          display: none;
+          background-color: #03a8f5;
+          color: white;
+          border-radius: 4px;
+          padding: 4px;
+          margin-top: 10px;
+          width: fit-content;
+        }
+
+        .movieIsSeries {
+          display: none;
+          background-color: #ff5722;
+          color: white;
+          border-radius: 4px;
+          padding: 4px;
+          margin-top: 10px;
+          width: fit-content;
+        }
+
+        .movieLimit {
+          display: none;
+          border: 1px solid white;
+          border-radius: 4px;
+          padding: 3px 4px;
+          color: lightgray;
+          margin-top: 10px;
+        }
+
+        @include mobile {
+          font-size: 8px;
+          gap: 4px;
+        }
+      }
+
+      .playIcon {
+        display: none;
+        font-size: 30px;
+        position: absolute;
+        bottom: 0;
+        right: 10px;
+        margin: auto;
+
+        @include mobile {
+          font-size: 28px;
+          bottom: 4px;
+        }
+      }
+    }
+
+    &:hover .movieInfo {
+      bottom: 10px;
+
+      @include mobile {
+        bottom: 2px;
+      }
+    }
+    &:hover {
+      .movieDesc {
+        display: -webkit-box;
+      }
+      .tags .movieYear {
+        display: block;
+      }
+      .tags .movieIsSeries {
+        display: block;
+      }
+      .tags .movieLimit {
+        display: block;
+      }
+      .playIcon {
+        display: block;
+      }
+    }
+  }
+}
+.noResults {
+  min-height: 90vh;
+  width: 100%;
+  color: white;
+  font-size: 28px;
+  padding-left: 50px;
+  background-color: var(--main-color);
+  padding-top: 100px;
+
+  @include mobile {
+    padding-left: 20px;
+  }
+
+  p {
+    color: var(--accent-color);
+  }
+}

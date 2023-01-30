@@ -2,6 +2,8 @@
   flex: 4;
   color: var(--font-color);
   margin-top: 20px;
+  overflow: auto;
+  height: calc(100vh - 51px)
 }
 
 .addProductForm {
@@ -9,6 +11,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  padding-bottom: 40px;
 }
 
 .addProductItem {
@@ -38,11 +41,15 @@
   margin-bottom: 10px;
   padding: 7px 20px;
   border: none;
-  border-radius: 10px;
-  background-color: var(--accent-color);
+  border-radius: var(--border-radius);
+  background-color: var(--button-color);
   color: white;
   font-weight: 600;
   cursor: pointer;
   height: 40px;
   align-self: center;
+}
+
+.addProductButtonUpload:hover {
+  opacity: 0.8;
 }

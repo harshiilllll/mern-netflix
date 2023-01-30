@@ -34,13 +34,17 @@
   margin-top: 10px;
   padding: 7px 20px;
   border: none;
-  border-radius: 10px;
-  background-color: darkblue;
+  border-radius: var(--border-radius);
+  background-color: var(--button-color);
   color: white;
   font-weight: 600;
   cursor: pointer;
   height: 40px;
   align-self: center;
+}
+
+.addProductButton:hover {
+  opacity: 0.8;
 }
 
 .movieSelect {

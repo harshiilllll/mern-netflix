@@ -6,7 +6,10 @@ import Home from "./pages/home/Home";
 import Watch from "./pages/watch/Watch";
 import React, { useContext } from "react";
 import { AuthContext } from "./authContext/AuthContext";
-import WatchDetail from "./pages/watch Detail/WatchDetail";
+import WatchDetail from "./pages/watchDetail/WatchDetail";
+import Search from "./pages/search/Search";
+import WatchList from "./pages/watchList/WatchList";
+import Settings from "./pages/settingsPage/Settings";
 
 function App() {
   const {user} = useContext(AuthContext);
@@ -23,10 +26,13 @@ function App() {
 
         {user && (
           <React.Fragment>
-            <Route path="/movies" element={<Home type="movie" />} />
-            <Route path="/series" element={<Home type="series" />} />
-            <Route path="/watch" element={<Watch />} />
-            <Route path="/watchdetail" element={<WatchDetail />} />
+            <Route path="/movies" element={user ? <Home type="movie" /> : <Navigate to="login" />} />
+            <Route path="/series" element={user ? <Home type="series" /> : <Navigate to="login" />} />
+            <Route path="/watch" element={user ? <Watch /> : <Navigate to="login" />} />
+            <Route path="/watchdetail" element={user ? <WatchDetail /> : <Navigate to="login" />} />
+            <Route path="/search" element={user ? <Search /> : <Navigate to="login" />} />
+            <Route path="/watchlist" element={user ? <WatchList /> : <Navigate to="login" />} />
+            <Route path="/settings" element={user ? <Settings /> : <Navigate to="login" />} />
           </React.Fragment>
         )}
       </Routes>
