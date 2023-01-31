@@ -2,7 +2,6 @@ import axios from "axios";
 import { loginFailure, loginStart, loginSuccess } from "./AuthActions";
 
 export const login = async (user, dispatch, setError) => {
-  
   dispatch(loginStart());
   try {
     const res = await axios.post("auth/login", user);
@@ -12,7 +11,6 @@ export const login = async (user, dispatch, setError) => {
     dispatch(loginFailure());
   }
 };
-
 
 //Google Login
 export const googleLogin = async (user, dispatch) => {
