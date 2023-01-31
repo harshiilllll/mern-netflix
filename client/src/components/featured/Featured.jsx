@@ -24,11 +24,11 @@ function Featured({ type, setGenre }) {
       }
     };
 
-    // const interval = setInterval(() => {
+    const interval = setInterval(() => {
       getRandomMovie();
-    // }, [8000]);
+    }, [8000]);
 
-    // return () => clearInterval(interval);
+    return () => clearInterval(interval);
   }, [type]);
 
   return (
