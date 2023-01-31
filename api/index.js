@@ -5,12 +5,13 @@ const movieRoute = require("./routes/movies");
 const listRoute = require("./routes/lists");
 const app = express();
 const PORT = 8000 || process.env.PORT;
-
+const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 
 dotenv.config();
+app.use(cors());
 
 mongoose.set("strictQuery", false);
 mongoose
